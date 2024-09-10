@@ -8,8 +8,6 @@ const storiesGetController = async (req, res) => {
         return res.status(200).json({ success: true, data: stories });
 
     } catch (err) {
-        console.log('err in story controller: ', err);
-
         return res.status(404).json({
             success: false,
             message: 'Failed to retrieve stories, Please check the URL',
@@ -46,7 +44,6 @@ const storiesPostController = async (req, res) => {
         });
 
     } catch (err) {
-        console.error('Error saving story:', err);
         res.status(500).json({
             success: false,
             message: 'Server error'
