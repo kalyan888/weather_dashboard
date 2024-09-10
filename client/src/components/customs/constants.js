@@ -61,7 +61,7 @@ export const routingPaths = {
   home: "/",
   mobileNavMenu: "/mobileMenu",
   forecast: "/forecast",
-  personalStory: "/personalstory",
+  personalStory: "/personalStory",
   about: "/about",
   notFound: "*"
 };
@@ -147,7 +147,7 @@ export const getWeatherType = (weatherCode) => {
 
     case (weatherCode === 800):
       return sunny;
-      
+
     case (weatherCode === 801):
       return partlyCloudyImg;
 
