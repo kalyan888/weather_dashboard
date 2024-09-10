@@ -1,0 +1,145 @@
+.weather-container {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    /* background-color: mediumaquamarine; */
+    width: 70vw;
+    margin: 13% 15%;
+    padding: 5% 5%;
+}
+
+.weather-left,
+.weather-right {
+    display: flex;
+    flex-direction: column;
+}
+
+.weather-left {
+    align-items: flex-start;
+}
+
+.home-temp-units {
+    font-size: 35px;
+    letter-spacing: -3px;
+    margin-left: 5px !important;
+}
+
+.home-min-max-units {
+    font-size: 12px;
+    letter-spacing: -1px;
+}
+
+.home-min-max-container {
+    display: flex;
+}
+
+.weather-item {
+    margin: 5px 0;
+}
+
+.weather-right-item-desc {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 0 0 15px;
+}
+
+.home-conditions-container {
+    display: flex;
+}
+
+.home-condition-details-con {
+    display: flex;
+}
+
+.home-condition-icons {
+    font-size: 40px;
+}
+
+.home-weather-type {
+    font-weight: 500;
+}
+
+.home-temp {
+    font-size: 52px;
+    font-weight: 300;
+}
+
+.home-condition-units {
+    font-size: 14px;
+    letter-spacing: -1px;
+    font-weight: 500;
+    transform: scale(.5, 1);
+}
+
+.home-season-icon {
+    height: 120px;
+    width: 130px;
+}
+
+.home-con-item-high {
+    margin-right: 10px;
+}
+
+.home-search {
+    position: absolute;
+    top: 17vh;
+    left: 37%;
+    z-index: 2;
+}
+
+/* ************* Smaller Devices ***************  */
+@media screen and (max-width: 767px) {
+    .home-search {
+        top: 16vh;
+        left: 11%;
+    }
+
+    .weather-container {
+        align-items: center;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 75vh;
+        width: 80vw;
+        margin: 20% 10% 10% 10%;
+        padding: 0;
+    }
+
+    .weather-left,
+    .weather-right {
+        align-items: center;
+    }
+
+    .weather-left {
+        margin-top: 45px;
+    }
+
+    .weather-right {
+        align-items: start;
+        flex-direction: row;
+    }
+
+    .home-condition-details-con {
+        margin: 0 15px;
+    }
+}
+
+/* ************* Larger Devices ***************  */
+@media screen and (min-width: 768px) {
+
+    .home-conditions-container {
+        flex-direction: column;
+        margin-bottom: 40px;
+    }
+
+    .home-condition-details-con {
+        margin: 0px 0 25px 0;
+    }
+
+    .home-season-icon {
+        margin: 0 0 -8px -5px;
+    }
+}

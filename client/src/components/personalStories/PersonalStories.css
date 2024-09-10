@@ -1,0 +1,399 @@
+.personal-stories-con {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.weather-stories-container {
+    padding: 40px;
+    /* for dev tools */
+    position: relative;
+    z-index: 1;
+    padding: 70px 40px 40px 40px;
+}
+
+.story-above-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.story-above-container h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.story-above-container p {
+    font-size: 16px;
+    color: #555;
+}
+
+.story-below-container {
+    border: 1px solid #e0e0e0;
+    padding: 20px;
+    border-radius: 8px;
+    height: 72vh;
+    display: flex;
+    flex-direction: column;
+    /* background-color: rgba(225, 225, 225, 0.2); */
+    background-color: rgb(0 0 0 / 50%);
+    /* overflow-y: auto; */
+}
+
+.top-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+/* Container to hold the story cards with overflow and scrolling */
+.bottom-container {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.story-cards-container {
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+    padding: 0 5px 0 0;
+}
+
+.search-field {
+    width: 108%;
+    padding: 10px 40px 10px 10px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+.search-icon {
+    position: absolute;
+    font-size: 22px;
+    top: 9px;
+    right: -6px;
+}
+
+.add-story-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-story-button:hover {
+    background-color: #0048ff;
+}
+
+
+/* Button styling */
+/* .add-story-button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+} */
+
+/* Individual story card styling */
+.story-card {
+    padding: 15px;
+    border: 1px solid #ccc;
+    /* background-color: rgba(100, 100, 100, 0.3); */
+    /* background-color: rgb(0 0 0 / 50%); */
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.story-card-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.story-card-header h1 {
+    margin: 0;
+    font-size: 18px !important;
+    font-weight: 500 !important;
+    width: 320px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.story-card-header p {
+    margin: 2px 0;
+    font-size: 16px;
+    width: 380px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.expand-button {
+    background-color: transparent;
+    border: none;
+    color: #007BFF;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.story-description.truncated {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 10px;
+    border-radius: 0 0 10px 10px;
+    margin-top: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-height: 4em;
+}
+
+/* Full description when expanded */
+.story-description.full {
+    white-space: normal;
+    padding: 10px;
+    border-radius: 0 0 10px 10px;
+    margin-top: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.bottom-container::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.bottom-container::-webkit-scrollbar-track {
+    background-color: #f0f0f0;
+    border-radius: 5px;
+}
+
+.bottom-container::-webkit-scrollbar-thumb {
+    background-color: #b0b0b0;
+    border-radius: 5px;
+}
+
+.bottom-container::-webkit-scrollbar-thumb:hover {
+    background-color: #000000;
+    cursor: pointer;
+}
+
+
+/* *****************************   AddStory Modal Styles */
+
+.story-modal {
+    position: absolute;
+    height: 58%;
+    width: 80%;
+    top: 14%;
+    left: 10%;
+    z-index: 2;
+    background-color: whitesmoke;
+    border-radius: 5px;
+    border: 1px solid #fff;
+}
+
+.story-modal-header {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--background-dark);
+    padding: 5px 10px;
+    border-radius: 5px 5px 0 0;
+}
+
+.story-modal-form-con {
+    padding: 5px 10px;
+}
+
+.story-modal-header h2 {
+    font-size: var(--small-medium-text);
+    font-weight: 300;
+    color: #fff !important;
+}
+
+.story-modal-header button {
+    color: #fff;
+    height: 20px;
+    width: 20px;
+    font-size: 25px;
+    background: none;
+    border: none;
+    margin-right: 3px;
+    cursor: pointer;
+}
+
+.story-modal-above-container {
+    display: flex;
+}
+
+.story-modal-above-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+.user-details {
+    font-size: var(--small-text);
+    height: 40px;
+    width: 46%;
+    padding-left: 15px;
+    background: transparent;
+    background-color: transparent !important;
+    border: none;
+    border-bottom: 1px solid #000;
+    outline: none;
+    color: #000 !important;
+}
+
+.user-text {
+    font-size: var(--small-text);
+    color: #000 !important;
+    width: 96%;
+    min-height: 25px;
+    max-height: 180px;
+    padding: 0 15px 15px 15px;
+    background: transparent;
+    margin: 30px 0 30px 25px;
+    border: none;
+    border-bottom: 1px solid transparent;
+    border-bottom: 1px solid #000;
+    outline: none;
+    color: inherit;
+    resize: vertical;
+}
+
+.field-validation,
+.text-area-validation {
+    /* animation: shake 0.5s ease-in-out 2; */
+    border-bottom: 1px solid var(--validation-red) !important;
+}
+
+.field-validation::placeholder,
+.text-area-validation::placeholder {
+    color: var(--validation-red);
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.add-story-modal-btn {
+    width: 120px;
+    height: 40px;
+    border-radius: 25px;
+    font-size: 14px;
+    border: none;
+    margin-right: 20px;
+    box-shadow: 6px 6px 12px #c5c5c5,
+        -6px -6px 12px #ffffff;
+    transition: .5s ease;
+    cursor: pointer;
+}
+
+.add-story-modal-btn::before {
+    content: '';
+    width: 0;
+    height: 3em;
+    border-radius: 30em;
+    position: absolute;
+    background-color: #000;
+    top: 0;
+    left: 0;
+    display: block;
+    z-index: -1;
+}
+
+.clear-btn:hover {
+    color: #fff;
+    background-color: #d8e3f5;
+}
+
+.add-btn:hover {
+    color: #fff;
+    background-color: #007bff;
+}
+
+/* AddStory Modal Styles  ***************************** */
+
+.story-below-container {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.dark-mode .story-below-container {
+    background-color: rgb(120 120 120 / 20%);
+}
+
+.light-mode .story-below-container {
+    border: 1px solid #000;
+    background-color: rgba(225, 225, 225, 0.2);
+}
+
+.dark-mode .story-card {
+    background-color: rgba(190, 190, 190, 0.2);
+}
+
+.light-mode .story-card {
+    /* background-color: rgba(0, 0, 0, 0.1); */
+    background-color: rgba(190, 190, 190, 0.2);
+    border: 1px solid #aaa;
+}
+
+.cloudy-theme .story-above-container h1 {
+    color: #000 !important;
+}
+
+.cloudy-theme .story-above-container span {
+    color: #222 !important;
+}
+
+@media (max-width: 767px) {
+    .weather-stories-container {
+        padding: 50px 40px 40px 40px;
+    }
+
+    .story-above-container h1 {
+        font-size: 22px;
+    }
+
+    .story-above-container span {
+        font-size: 12px;
+    }
+
+    .story-above-container {
+        margin-top: 10px;
+    }
+
+    .story-below-container {
+        height: 64vh;
+    }
+
+    .search-field {
+        width: 95%;
+        padding: 10px 35px 10px 10px;
+    }
+
+    .search-icon {
+        top: 10px;
+        right: 20px;
+    }
+
+    .story-modal {
+        height: 60%;
+        width: 94%;
+        left: 3%;
+    }
+
+    .user-text {
+        max-height: 190px;
+        margin: 30px 0 30px 10px;
+        padding: 0 15px 15px 15px;
+    }
+
+    .story-modal-header button {
+        margin-top: -2px;
+    }
+}
