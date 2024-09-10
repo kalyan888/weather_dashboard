@@ -13,11 +13,11 @@ dotenv.config();
 connectDB()
 
 // Middleware to parse JSON
-app.use(cors())
+// app.use(cors())
 // app.use(cors({ origin: process.env.REACT_APP_API_URL }))
-// app.use(cors({
-//     origin: 'https://your-frontend-domain.vercel.app'
-// }));
+app.use(cors({
+    origin: 'https://kalyan-weather-app.vercel.app'
+}));
 
 app.use(morgan('dev'))
 app.use(express.json());

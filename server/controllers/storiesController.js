@@ -13,7 +13,7 @@ const storiesGetController = async (req, res) => {
         return res.status(404).json({
             success: false,
             message: 'Failed to retrieve stories, Please check the URL',
-            error: err.message // Include the error message in the response
+            error: err.message
         });
     }
 }
