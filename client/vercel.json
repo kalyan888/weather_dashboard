@@ -1,8 +1,8 @@
 {
     "rewrites": [
         {
-            "source": "/(.*)",
-            "destination": "/"
+            "source": "/stories",
+            "destination": "/api/stories"
         }
     ]
 }
