@@ -3,9 +3,9 @@ const router = express.Router();
 const { storiesGetController, storiesPostController } = require('../controllers/storiesController');
 
 // Route to get all stories
-router.get('/stories', storiesGetController);
+router.get('/api/stories', storiesGetController);
 
 // Route to add a new story
-router.post('/stories', storiesPostController);
+router.post('/api/stories', storiesPostController);
 
 module.exports = router;

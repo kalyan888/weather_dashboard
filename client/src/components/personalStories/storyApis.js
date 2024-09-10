@@ -8,7 +8,7 @@ export const fetchStories = async () => {
     try {
 
         // const response = await fetch('http://localhost:8080/personalStories/stories');
-        const response = await fetch(`${apiUrl}/stories`);
+        const response = await fetch(`${apiUrl}/personalStories/stories`);
 
         console.log('Fetch response: ', response);
 
@@ -30,7 +30,7 @@ export const fetchStories = async () => {
 export const addStory = async (story) => {
     try {
         // const response = await fetch('http://localhost:8080/personalStories/stories', {
-        const response = await fetch(`${apiUrl}/stories`, {
+        const response = await fetch(`${apiUrl}/personalStories/stories`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
