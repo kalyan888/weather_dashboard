@@ -16,7 +16,7 @@ connectDB()
 // app.use(cors())
 // app.use(cors({ origin: process.env.REACT_APP_API_URL }))
 app.use(cors({
-    origin: 'https://kalyan-weather-app.vercel.app'
+    origin: 'https://kalyan-weather-app-server.vercel.app'
 }));
 
 app.use(morgan('dev'))

@@ -5,36 +5,11 @@ import AddStoryModal from './AddStoryModal';
 import './PersonalStories.css';
 import { fetchStories } from './storyApis';
 
-// Example list of stories
-const initialStories = [
-  {
-    name: 'Alice Wattttttttttttttttttttttttt',
-    location: 'Chicago, USA',
-    description: 'A windy day in the Windy City, as expected! The gusts were strong, but it made the experience of the city even more exhilarating.',
-  },
-  {
-    name: 'Alice Jyo',
-    location: 'Chicago, USA',
-    description: 'A windy day in the Windy City, as expected! The gusts were strong, but it made the experience of the city even more exhilarating. A windy day in the Windy City, as expected! The gusts were strong, but it made the experience of the city even more exhilarating. A windy day in the Windy City, as expected! The gusts were strong, but it made the experience of the city even more exhilarating. A windy day in the Windy City, as expected! The gusts were strong, but it made the experience of the city even more exhilarating.',
-  },
-  {
-    name: 'Alice Martin',
-    location: 'Chicago, USA',
-    description: 'A windy day in the Windy City, as expected! The gusts were strong, but it made the experience of the city even more exhilarating. A windy day in the Windy City, as expected! The gusts were strong, but it made the experience of the city even more exhilarating. A windy day in the Windy City, as expected! The gusts were strong, but it made the experience of the city even more exhilarating. A windy day in the Windy City, as expected! The gusts were strong, but it made the experience of the city even more exhilarating.',
-  },
-  {
-    name: 'Alice Smith',
-    location: 'Chicago, USA',
-    description: 'A windy day in the Windy City, as expected! The gusts were strong, but it made the experience of the city even more exhilarating.',
-  },
-  // Add more stories as needed
-];
-
 const PersonalStory = () => {
   // State to track which story card is expanded
   const { appliedTheme } = useSelector((state) => state.themesSlice);
   const [expandedStoryIndex, setExpandedStoryIndex] = useState(null);
-  const [stories, setStories] = useState(initialStories);
+  const [stories, setStories] = useState([]);
   const [searchStory, setSearchStory] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
 
