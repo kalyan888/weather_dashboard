@@ -93,10 +93,14 @@
 
 /* ************* Smaller Devices ***************  */
 @media screen and (max-width: 767px) {
+    .home-container {
+        margin-top: 30%;
+    }
+
     .home-search {
         display: flex;
         justify-content: center;
-        top: 14vh;
+        top: 20vh;
         left: 8%;
     }
 

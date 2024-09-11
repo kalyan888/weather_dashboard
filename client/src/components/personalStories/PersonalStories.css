@@ -373,7 +373,7 @@
     }
 
     .search-field {
-        width: 95%;
+        width: 93%;
         padding: 10px 35px 10px 10px;
     }
 
@@ -384,7 +384,7 @@
 
     .add-story-button {
         /* font-size: 10px; */
-        width: 100px;
+        width: 110px;
     }
 
     .story-modal {

@@ -436,7 +436,7 @@
 
     .fc-right-container {
         top: 37vh;
-        min-height: calc(92vh - 29vh);
+        min-height: calc(92vh - 27vh);
         width: 100%;
         overflow-y: auto;
     }
@@ -517,12 +517,21 @@
     }
 
     .fc-rb-wind-container {
-        height: 125px;
+        height: 130px;
         width: 100%;
     }
 
     .fc-rb-wind-speed-container {
         width: 100%;
+    }
+
+    .fc-rb-wind {
+        position: relative;
+        top: 20px;
+    }
+
+    .fc-rb-wind-speed-fs {
+        font-size: 10px;
     }
 
     .fc-rb-humidity-body {
