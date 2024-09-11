@@ -210,29 +210,36 @@
 }
 
 @media screen and (max-width: 767px) {
+  .wind-container {
+    width: 80px;
+    right: -4px;
+  }
+
   .wind-circle {
-    top: -9px;
+    top: -4px;
   }
 
   .wind-arrow {
-    top: -8px;
+    top: -3px;
   }
 
   .north {
-    top: -45px;
+    top: -42px;
   }
 
   .west {
-    top: 32%;
-  }
-
-  .south {
-    bottom: -27px;
+    top: 44%;
+    left: -18px;
   }
 
   .east {
-    top: 32%;
+    top: 44%;
   }
+
+  .south {
+    bottom: -30px;
+  }
+
   .humidity-label-btm {
     top: 82%;
   }

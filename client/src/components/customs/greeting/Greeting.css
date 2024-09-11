@@ -20,12 +20,14 @@
 
 @media screen and (max-width: 767px) {
     .greeting-container {
-        /* left: 30px; */
+        left: 15px;
     }
+
     .greeting-heading {
         font-size: 0.8rem;
         font-weight: 600;
     }
+
     .greeting-location {
         font-size: 12px;
         /* color: #fff; */

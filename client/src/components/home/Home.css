@@ -94,8 +94,10 @@
 /* ************* Smaller Devices ***************  */
 @media screen and (max-width: 767px) {
     .home-search {
-        top: 16vh;
-        left: 11%;
+        display: flex;
+        justify-content: center;
+        top: 14vh;
+        left: 8%;
     }
 
     .weather-container {
@@ -123,7 +125,12 @@
     }
 
     .home-condition-details-con {
-        margin: 0 15px;
+        margin: 0 10px;
+    }
+
+    .home-hum-perc,
+    .home-hum-desc {
+        font-size: 12px;
     }
 }
 
