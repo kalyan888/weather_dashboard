@@ -11,7 +11,7 @@ export const fetchCoordinatesAndWeather = createAsyncThunk(
       let locationName = location;
 
       if (coords) {
-        const response = await axios.get(`http://api.openweathermap.org/geo/1.0/reverse?lat=${coords.lat}&lon=${coords.lon}&limit=1&appid=${API_KEY}`);
+        const response = await axios.get(`https://api.openweathermap.org/geo/1.0/reverse?lat=${coords.lat}&lon=${coords.lon}&limit=1&appid=${API_KEY}`);
         if (response.data.length === 0) {
           return rejectWithValue('Coordinates not found');
         }
@@ -20,7 +20,7 @@ export const fetchCoordinatesAndWeather = createAsyncThunk(
         lon = data.lon;
         locationName = data.name;
       } else {
-        const response = await axios.get(`http://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=1&appid=${API_KEY}`);
+        const response = await axios.get(`https://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=1&appid=${API_KEY}`);
         if (response.data.length === 0) {
           return rejectWithValue('Location not found');
         }

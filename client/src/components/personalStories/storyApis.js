@@ -25,6 +25,7 @@ export const addStory = async (story) => {
         const response = await fetch(`${apiUrl}/personalStories/stories`, {
             method: 'POST',
             headers: {
+                Accept: "application/json",
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(story),

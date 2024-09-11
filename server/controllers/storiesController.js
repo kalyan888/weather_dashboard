@@ -44,6 +44,8 @@ const storiesPostController = async (req, res) => {
         });
 
     } catch (err) {
+        console.error('Error creating story:', err);
+
         res.status(500).json({
             success: false,
             message: 'Server error'
