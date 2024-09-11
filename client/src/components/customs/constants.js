@@ -92,20 +92,6 @@ export const useDeviceType = () => {
   return deviceType;
 };
 
-
-export const iconMap = {
-  'sunny': sunny,
-  'broken-clouds': brokenCloudsImg,
-  'partly-cloudy': partlyCloudyImg,
-  'overcast-clouds': overcastCloudsImg,
-  'scattered-clouds': scatteredCloudsImg,
-  'moderate-rain': moderateRainImg,
-  'rainy': heavyRainImg,
-  'thunder-shower': thunderstormImg,
-  'scattered-thunderestorm': scatteredThunderestorm,
-  'scattered-thunderstorms-night': scatteredThunderstormsNight,
-};
-
 export const getWeatherBGImg = (weatherCode) => {
   switch (true) {
     case (weatherCode >= 200 && weatherCode <= 232):

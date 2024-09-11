@@ -19,6 +19,7 @@ function NavBar({ isCogOpen, setIsCogOpen }) {
 
   const onClickCog = () => {
     setIsCogOpen(!isCogOpen);
+    updateToggleNav(false);
   }
 
   const onClickChangeMode = () => {

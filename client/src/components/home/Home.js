@@ -3,11 +3,10 @@ import { BiWater } from "react-icons/bi";
 // import { BsWater } from "react-icons/bs";
 import { FaWind } from "react-icons/fa";
 import { useSelector } from 'react-redux';
-import sunImg from "../../assets/icons/sunny.png";
 // import { fetchCoordinatesAndWeather } from '../../store/searchSlice';
 import './Home.css';
 import Search from '../search/Search';
-import { getWeatherType, iconMap, useDeviceType } from '../customs/constants';
+import { getWeatherType, useDeviceType } from '../customs/constants';
 import { format } from 'date-fns';
 
 const Home = () => {
@@ -29,12 +28,6 @@ const Home = () => {
   //   return <div>Error: {error}</div>;
   // }
 
-  const getIcon = (desc) => {
-    const iconName = desc && desc.toLowerCase().replace(/ /g, '-');
-    // const iconName = 'scattered-thunderestorm';
-    return iconMap[iconName] || sunImg;
-  }
-
   return (
     <div className='home-container'>
       <Search searchClassName='home-search' />
@@ -42,7 +35,6 @@ const Home = () => {
         <div className="weather-container">
           {/* <Greeting /> */}
           <div className="weather-left">
-            {/* <img src={getIcon(weather?.weather?.[0]?.description)} alt="" className="home-season-icon" /> */}
             <img src={getWeatherType(weather?.weather?.[0]?.id)} alt="" className="home-season-icon" />
             <div className="home-weather-type">{weatherTypeCapitalized || "--"}</div>
 

@@ -24,8 +24,22 @@ const Search = ({ searchClassName }) => {
             dispatch(fetchCoordinatesAndWeather({ location: '', coords: { lat: latitude, lon: longitude } }));
           },
           (error) => {
-            console.error('Error getting location', error);
-            setError('Unable to get current location.');
+            switch (error.code) {
+              case error.PERMISSION_DENIED:
+                setError('Location access denied by user.');
+                break;
+              case error.POSITION_UNAVAILABLE:
+                setError('Location information is unavailable.');
+                break;
+              case error.TIMEOUT:
+                setError('The request to get user location timed out.');
+                break;
+              case error.UNKNOWN_ERROR:
+              default:
+                setError('An unknown error occurred while retrieving location.');
+                break;
+            }
+            console.error('Error getting location:', error);
             setShowProgressBar(true); // Show progress bar on error
           }
         );

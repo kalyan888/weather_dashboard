@@ -17,7 +17,8 @@
   height: 60px;
   /* color: white; */
   z-index: 1000;
-  backdrop-filter: blur(3px);
+  backdrop-filter: blur(2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .logo-link-style:hover {
@@ -83,15 +84,16 @@
 }
 
 .mode-icon {
-  padding: 12px;
+  padding: 14px;
+  opacity: 0.6;
 }
 
 .mode-icon-1 {
-  border-radius: 8px 8px 0 0;
+  border-radius: 4px 4px 0 0;
 }
 
 .mode-icon-2 {
-  border-radius: 0 0 8px 8px;
+  border-radius: 0 0 4px 4px;
 }
 
 .mode-icon:hover {
@@ -104,7 +106,9 @@
 }
 
 .active-mode {
-  background-color: #000429;
+  color: #000;
+  background-color: #f2f2f2;
+  opacity: 1;
 }
 
 .mode-icons {
@@ -267,10 +271,6 @@
   /* color: green !important; */
 }
 
-.light-mode .active-mode {
-  color: #fff !important;
-}
-
 .light-mode .modes-container {
   color: #fff !important;
   background-color: rgba(150, 150, 150, 0.2);
@@ -355,13 +355,13 @@
   .mobile-nav-links {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
     right: 0;
-    height: 250px;
+    height: 100vh;
     width: 100%;
     /* color: inherit !important; */
-    background-color: rgba(255, 255, 255, 0.5) !important;
+    background-color: rgba(0, 0, 0, 0.8) !important;
     position: absolute;
     -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
@@ -378,25 +378,29 @@
   }
 
   .modes-container {
-    right: 12%;
-    height: 100px;
-    width: 76%;
+    right: 4%;
+    height: 98px;
+    width: 92%;
     z-index: 2;
     background-color: rgba(0, 0, 0, 1);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
   }
 
-  .light-mode .active-mode {
-    color: #000 !important;
-    background-color: mintcream !important;
+  .light-mode .screen-nav-link-item {
+    color: #fff !important;
   }
 
-  .mode-icon {}
+  .light-mode .mode-icon {
+    color: #fff;
+    background-color: #141414;
+  }
 
-  .mode-icon-1 {}
-
-  .mode-icon-2 {}
+  .light-mode .active-mode {
+    color: #fff;
+    background-color: #1a1a1a !important;
+    opacity: 1;
+  }
 
   .switch {
     top: -6%;
@@ -434,5 +438,4 @@
     padding: 2px;
     right: 15%;
   }
-
 }
