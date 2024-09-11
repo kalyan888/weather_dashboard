@@ -91,9 +91,7 @@ const About = () => {
         <div className="about-card" style={{ '--clr': cardColors[5], '--x': `${x}px`, '--y': `${y}px` }} onMouseMove={handleMouseMove}>
           <h3>Contact Information</h3>
           <span>
-            {/* If you have any feedback, suggestions, or need support, feel free to contact us at <a href="mailto:support@weatherapp.com">support@weatherapp.com</a>.
-            We also welcome you to follow us on our social media channels for updates. */}
-            If you have any feedback, suggestions, or need support, feel free to contact me at <a href="mailto:kalyanguttula3175@gmail.com">kalyanguttula3175@gmail.com</a>.
+            If you have any feedback, suggestions, or need support, feel free to contact me at <a className='card-email' href="mailto:kalyanguttula3175@gmail.com">kalyanguttula3175@gmail.com</a>.
           </span>
         </div>
       </div>

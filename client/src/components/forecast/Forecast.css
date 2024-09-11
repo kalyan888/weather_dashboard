@@ -1,6 +1,7 @@
 .forecast-container {
     display: flex;
     height: 100vh;
+    user-select: none;
     /* background: red; */
 }
 
@@ -397,6 +398,11 @@
     font-size: 12px;
 }
 
+
+.fc-rb-wind-speed-descrptn {
+    margin-top: 10px;
+}
+
 .fc-rb-wind-description {
     font-size: 12px;
     display: block;
@@ -436,7 +442,7 @@
 
     .fc-right-container {
         top: 37vh;
-        min-height: calc(92vh - 27vh);
+        min-height: calc(92vh - 30vh);
         width: 100%;
         overflow-y: auto;
     }
@@ -526,12 +532,23 @@
     }
 
     .fc-rb-wind {
-        position: relative;
-        top: 20px;
+        /* position: relative;
+        top: 20px; */
+        position: absolute;
+        top: 65px;
     }
 
-    .fc-rb-wind-speed-fs {
+    .fc-rb-wind-speed-fs,
+    .fc-rb-wind-speed-descrptn {
         font-size: 10px;
+    }
+
+    .fc-rb-wind-speed-descrptn {
+        margin-top: 8px;
+    }
+
+    .fc-rb-wind-desc-span {
+        display: inline;
     }
 
     .fc-rb-humidity-body {
@@ -540,7 +557,7 @@
     }
 
     .fc-rb-humidity {
-        left: -10%;
+        left: -8%;
     }
 }
 

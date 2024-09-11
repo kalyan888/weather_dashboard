@@ -155,6 +155,10 @@ ul {
   pointer-events: none;
 }
 
+.no-selection {
+  user-select: none;
+}
+
 @media (max-width: 767px) {
   /* .app {
     min-height: 100vh;

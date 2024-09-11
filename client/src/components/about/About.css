@@ -26,25 +26,32 @@
 
   background-color: rgb(0 0 0 / 50%);
   border: 1px solid rgba(255, 255, 255, 0.5);
+  user-select: none;
+}
+
+.card-email {
+  user-select: initial !important;
 }
 
 .about-card h3 {
   margin-bottom: 10px;
   font-size: 18px;
   font-weight: 500;
+  user-select: none;
 }
 
 .about-card span {
   margin: 0;
   font-size: 14px;
+  user-select: none;
 }
 
-.about-container a {
+.about-card a {
   color: #007bff;
   text-decoration: none;
 }
 
-.about-container a:hover {
+.about-card a:hover {
   text-decoration: underline;
 }
 

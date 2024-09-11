@@ -193,7 +193,7 @@ const Forecast = () => {
                     <span>{selectedDay?.[0]?.wind?.speed != null ? Math.round(selectedDay[0].wind.speed) : "--"}</span>
                     <span className='fc-rb-wind-speed-desc fc-rb-wind-speed-fs'> km/h</span>
                     {/* <p className="fc-rb-wind-description">Light • From <span className="fc-rb-wind-desc-span">east</span></p></div> */}
-                    <span className="fc-rb-wind-description fc-rb-wind-speed-fs">Light • From <span className="fc-rb-wind-desc-span">{sunriseDirection}</span></span></div>
+                    <span className="fc-rb-wind-description fc-rb-wind-speed-descrptn">Light • From <span className="fc-rb-wind-desc-span">{sunriseDirection}</span></span></div>
 
                   <WindDirection angle={selectedDay?.[0]?.wind?.deg != null ? selectedDay[0].wind.deg : 0} />
                 </div>

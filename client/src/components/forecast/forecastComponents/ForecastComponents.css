@@ -209,10 +209,17 @@
   color: #000;
 }
 
+
+.hum-prec-chart-container {
+  display: flex;
+  margin-bottom: 10px;
+}
+
 @media screen and (max-width: 767px) {
   .wind-container {
     width: 80px;
-    right: -4px;
+    /* right: -4px; */
+    left: 55px;
   }
 
   .wind-circle {
@@ -242,5 +249,9 @@
 
   .humidity-label-btm {
     top: 82%;
+  }
+
+  .hum-prec-chart-container {
+    margin-bottom: 30px;
   }
 }

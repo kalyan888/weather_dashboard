@@ -125,7 +125,7 @@ const HumidityPrecipitationProgressBars = ({ data, selectedDay }) => {
 
     return (
         <div>
-            <div style={{ display: 'flex', marginBottom: '10px' }}>
+            <div className='hum-prec-chart-container'>
                 <button onClick={() => setActiveTab('humidity')} className={`tab ${activeTab === 'humidity' ? 'active' : ''}`} >
                     Humidity
                 </button>

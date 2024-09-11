@@ -354,6 +354,7 @@
 @media (max-width: 767px) {
     .weather-stories-container {
         padding: 50px 40px 40px 40px;
+        user-select: none;
     }
 
     .story-above-container h1 {
