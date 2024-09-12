@@ -29,6 +29,17 @@ const AddStoryModal = ({ setIsModalOpen, onRequestClose, setStories }) => {
         }, 1000);
     }
 
+    // Debounced vibration function to avoid performance hits on mobile devices
+    let vibrationTimeout;
+    const triggerVibration = (pattern) => {
+        if (vibrationTimeout) {
+            clearTimeout(vibrationTimeout);
+        }
+        vibrationTimeout = setTimeout(() => {
+            navigator.vibrate(pattern);
+        }, 100);
+    };
+
     // Add story
     const onClickAddStory = async (e) => {
         e.preventDefault();
@@ -38,21 +49,21 @@ const AddStoryModal = ({ setIsModalOpen, onRequestClose, setStories }) => {
         // Validate name
         if (name.value.trim() === "") {
             setFieldsValidation(prev => ({ ...prev, validName: false }));
-            navigator.vibrate([200, 100, 200]);
+            triggerVibration([200, 100, 200]);
             return;
         }
 
         // Validate location
         if (location.value.trim() === "") {
             setFieldsValidation(prev => ({ ...prev, validName: true, validLocation: false }));
-            navigator.vibrate([200, 100, 200]);
+            triggerVibration([200, 100, 200]);
             return;
         }
 
         // Validate description
         if (description.value.trim() === "") {
             setFieldsValidation(prev => ({ ...prev, validName: true, validLocation: true, validDescription: false }));
-            navigator.vibrate([200, 100, 200]);
+            triggerVibration([200, 100, 200]);
             return;
         }
 
