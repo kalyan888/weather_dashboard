@@ -238,6 +238,7 @@
 .hourly-forecast-items {
     display: flex;
     gap: 10px;
+    height: 100%;
     width: 100%;
     /* background: #fff; */
     border: 1px solid #fff;

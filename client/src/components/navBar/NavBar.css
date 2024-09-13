@@ -309,10 +309,6 @@
   z-index: 1;
 }
 
-.light-mode .screen-nav-link-item {
-  color: #fff !important;
-}
-
 .dark-mode .mode-icon {
   color: #000;
 }
@@ -427,6 +423,10 @@
     font-size: 22px;
     left: -0.6px;
     top: 6px;
+  }
+
+  .light-mode .screen-nav-link-item {
+    color: #fff !important;
   }
 }
 

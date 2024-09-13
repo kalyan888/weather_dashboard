@@ -34,8 +34,8 @@ ul {
 
 .app {
   color: #fff;
-  background-image: url("../src/assets/images/summer-img.jpg");
-  background-size: cover;
+  /* background-image: url("../src/assets/images/summer-img.jpg"); */
+  /* background-size: cover; */
   /* background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)),
   linear-gradient(101deg, #02aebc, var(--green-bg-color)); */
   /* color: var(--text-color-light);

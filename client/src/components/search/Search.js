@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { VscError } from "react-icons/vsc";
 import { fetchCoordinatesAndWeather, setLocation } from '../../store/searchSlice'; //, setCoords
 import "./Search.css";
 
@@ -81,8 +82,16 @@ const Search = ({ searchClassName }) => {
       />
       <button className="buttonn" onClick={handleSearch}> Search </button>
       {error && (
-        <div className="search-error">
-          {error}
+        <div className="search-alert-container">
+          <div class="search-alert-content-container">
+            <VscError size={24} className="icon" /> {/* react-icon */}
+            <div className="content">
+              <div className="column">
+                <span>Error</span> {/* message */}
+                <p>Some description</p> {/* description */}
+              </div>
+            </div>
+          </div>
           {showProgressBar && <div className="progress-bar"></div>}
         </div>
       )}

@@ -16,18 +16,18 @@
   outline: none;
 }
 
-.light-mode .location-search-input::placeholder {
-  color: #000 !important;
-}
 
-.light-mode .location-search-input {
+.light-mode .location-search-input,
+.light-mode .location-search-input::placeholder {
+  color: #000;
   border-bottom: 3px solid #000;
 }
 
-.dark-mode .location-search-input,
-.dark-mode .location-search-input::placeholder {
-  color: #fff !important;
+.location-search-input,
+.location-search-input::placeholder {
+  color: #fff;
 }
+
 
 .button {
   display: inline-flex;
@@ -70,22 +70,28 @@
   height: 8rem;
 } */
 
-.search-error {
+.search-alert-container {
   position: absolute;
-  top: 100%;
-  /* Positions the error message below the input field */
-  left: 0;
-  width: 100%;
+  top: -60px;
+  left: 115%;
+  width: 35vw;
   color: red;
-  background-color: white;
-  padding: 5px;
-  border: 1px solid red;
+  background-color: rgba(225, 225, 225, 0.2);
+  backdrop-filter: blur(2px);
+  padding: 10px 0 0 0;
   border-radius: 3px;
   margin-top: 5px;
-  /* Space between the input and the error message */
   z-index: 10;
-  /* Ensures the error message appears above other elements */
-  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.light-mode .search-alert-container {
+  background-color: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(2px);
+}
+
+.search-alert-content-container {
+  display: flex;
 }
 
 .progress-bar {
@@ -93,7 +99,7 @@
   width: 100%;
   height: 5px;
   background-color: #f0f0f0;
-  border-radius: 3px;
+  /* border-radius: 3px; */
   overflow: hidden;
   margin-top: 5px;
 }
@@ -136,7 +142,7 @@
 @media screen and (max-width: 767px) {
   .location-search-input {
     width: 45%;
-    margin: 0 15px 0 0;
+    margin: 0 12px 0 0;
   }
 
   .forecast-search .location-search-input {
