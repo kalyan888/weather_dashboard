@@ -370,7 +370,7 @@
     }
 
     .story-below-container {
-        height: 53vh;
+        height: 54vh;
         padding: 17px;
     }
 
@@ -386,7 +386,7 @@
 
     .add-story-button {
         /* font-size: 10px; */
-        width: 110px;
+        width: 120px;
     }
 
     .story-modal {
