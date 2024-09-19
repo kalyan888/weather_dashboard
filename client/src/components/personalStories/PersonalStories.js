@@ -13,17 +13,26 @@ const PersonalStory = () => {
   const [searchStory, setSearchStory] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  useEffect(() => {
-    const loadStories = async () => {
-      const result = await fetchStories();
-      console.log('result: ', result);
+
+  const loadStories = async () => {
+    try {
+      const response = await fetchStories();
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const result = await response.json();
+      // console.log('result: ', result);
       if (result.success) {
         setStories(result.data);
       } else {
         console.error('Error loading stories:', result.error);
       }
-    };
+    } catch (error) {
+      console.error('Error loading stories:', error);
+    }
+  };
 
+  useEffect(() => {
     loadStories();
   }, []);
 
