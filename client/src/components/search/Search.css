@@ -16,12 +16,14 @@
   outline: none;
 }
 
-.light-mode .location-search-input::placeholder {
-  color: #000;
-}
 
 .light-mode .location-search-input {
   border-bottom: 3px solid #000;
+}
+
+.light-mode .location-search-input,
+.light-mode .location-search-input::placeholder {
+  color: #000 !important;
 }
 
 .location-search-input,
