@@ -202,7 +202,7 @@
 /* ************* Smaller Devices ***************  */
 @media screen and (max-width: 767px) {
   .location-search-input {
-    width: 43%;
+    width: 42%;
     margin: 0 12px 0 0;
   }
 
