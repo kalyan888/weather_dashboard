@@ -274,7 +274,7 @@
   /* color: green !important; */
 }
 
-.cloudy-theme :where(.greeting-location, .greeting-heading, .screen-nav-link-item) {
+.cloudy-theme :where(.greeting-location, .greeting-heading) {
   color: #000;
 }
 

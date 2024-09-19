@@ -213,7 +213,11 @@
 
   .buttonn {
     /* padding: 8px 25px; */
-    width: 120px;
+    width: 115px;
+  }
+
+  .home-search .buttonn {
+    width: 110px;
   }
 
   .search-alert-container {
