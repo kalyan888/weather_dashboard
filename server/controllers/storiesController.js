@@ -1,5 +1,14 @@
 const Story = require("../models/Story");
 
+const homePath = async (req, res) => {
+    try {
+        return res.send('Server is running');
+    }
+    catch (err) {
+        console.error('Error:', err);
+    }
+}
+
 const storiesGetController = async (req, res) => {
     try {
         const stories = await Story.find(); // This retrieves all documents from the collection
@@ -56,4 +65,4 @@ const storiesPostController = async (req, res) => {
 
 
 
-module.exports = { storiesGetController, storiesPostController }
+module.exports = { homePath, storiesGetController, storiesPostController }

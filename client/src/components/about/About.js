@@ -19,7 +19,6 @@ const About = () => {
   };
 
   const getThemeBasedClr = () => {
-    console.log('appliedTheme: ', appliedTheme);
     switch (appliedTheme) {
       case 'summer-theme':
         return '#ff0';

@@ -6,15 +6,15 @@ import cloudyBGImg from '../../assets/images/cloudy-bg.jpg';
 import sunnyBGImg from '../../assets/images/sunny-bg.jpg';
 import winterBGImg from '../../assets/images/winter-bg.jpg';
 
-import brokenCloudsImg from '../../assets/icons/broken-clouds.png';
+// import brokenCloudsImg from '../../assets/icons/broken-clouds.png';
 import sunny from '../../assets/icons/sunny.png';
 import moderateRainImg from '../../assets/icons/moderate-rain.png';
 import heavyRainImg from '../../assets/icons/rainy.png';
 import overcastCloudsImg from '../../assets/icons/overcast-clouds.png';
 import partlyCloudyImg from '../../assets/icons/partly-cloudy.png';
 import scatteredCloudsImg from '../../assets/icons/broken-clouds.png';
-import scatteredThunderestorm from '../../assets/icons/scattered-thunderestorm.png';
-import scatteredThunderstormsNight from '../../assets/icons/scattered-thunderstorms-night.png';
+// import scatteredThunderestorm from '../../assets/icons/scattered-thunderestorm.png';
+// import scatteredThunderstormsNight from '../../assets/icons/scattered-thunderstorms-night.png';
 import thunderstormImg from '../../assets/icons/thunder-shower.png';
 import coldImg from '../../assets/icons/cold.png';
 

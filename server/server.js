@@ -10,21 +10,16 @@ const app = express();
 dotenv.config();
 
 //DB Connection
-connectDB()
+connectDB();
 
 // Middleware to parse JSON
 app.use(cors({ origin: process.env.REACT_APP_API_URL }))
 
-app.use(morgan('dev'))
+app.use(morgan('dev')); // Dev dependency - status, time
 app.use(express.json());
 
 // Use routes
 app.use('/personalStories', require('./routes/Stories'));
-
-
-// app.get('/', (req, res) => {
-//   return res.status(200).send('<h1>Welcome to Nodejs</h1>')
-// })
 
 
 //Port

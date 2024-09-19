@@ -1,9 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const { storiesGetController, storiesPostController } = require('../controllers/storiesController');
+const { homePath, storiesGetController, storiesPostController } = require('../controllers/storiesController');
+
+//Route to check server running
+router.get('/api', homePath);
 
 // Route to get all stories
-router.get('/api/stories', storiesGetController);
+router.get('/api/personalStories/stories', storiesGetController);
 
 // Route to add a new story
 router.post('/api/stories', storiesPostController);
