@@ -202,12 +202,12 @@
 /* ************* Smaller Devices ***************  */
 @media screen and (max-width: 767px) {
   .location-search-input {
-    width: 45%;
+    width: 43%;
     margin: 0 12px 0 0;
   }
 
   .forecast-search .location-search-input {
-    width: 60%;
+    width: 58%;
     margin: 0 15px 0 10px;
   }
 
