@@ -16,12 +16,12 @@ const PersonalStory = () => {
 
   const loadStories = async () => {
     try {
-      const response = await fetchStories();
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
+      const result = await fetchStories(); // Fetches all stories
+
+      if (!result.success) {
+        throw new Error('Response was not ok');
       }
-      const result = await response.json();
-      // console.log('result: ', result);
+
       if (result.success) {
         setStories(result.data);
       } else {
@@ -31,6 +31,7 @@ const PersonalStory = () => {
       console.error('Error loading stories:', error);
     }
   };
+
 
   useEffect(() => {
     loadStories();

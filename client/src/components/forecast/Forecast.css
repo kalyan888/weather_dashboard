@@ -446,13 +446,13 @@
         display: block;
         width: 100%;
         height: 10px;
-        box-shadow: 0 8px 12px -1px rgba(255, 255, 255, 0.3);
+        box-shadow: 0 4px 6px -1px rgba(255, 255, 255, 0.3);
         position: absolute;
         top: 27vh;
     }
 
     .light-mode .fc-day-wise-container::after {
-        box-shadow: 0 8px 10px -1px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 4px 10px -1px rgba(0, 0, 0, 0.3);
     }
 
     .fc-right-container {
