@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialThemeSeasonState = {
-  // mode: 'seasonal',
-  mode: 'theme',
+  mode: 'seasonal',
+  // mode: 'theme',
   theme: true, // Initial theme - Dark
   appliedTheme: ''
 };
