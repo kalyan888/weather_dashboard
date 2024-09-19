@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { VscError } from "react-icons/vsc";
+import { IoClose } from "react-icons/io5";
 import { fetchCoordinatesAndWeather, setLocation } from '../../store/searchSlice'; //, setCoords
 import "./Search.css";
 
@@ -12,17 +13,29 @@ const Search = ({ searchClassName }) => {
   const [localLocation, setLocalLocation] = useState(location);
   const [error, setError] = useState('');
   const [showProgressBar, setShowProgressBar] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const progressBarClear = () => {
+    const timer = setTimeout(() => {
+      setError(''); // ''
+      setShowProgressBar(false); // false
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }
 
   const handleSearch = () => {
     setError(''); // Clear any previous error message
     setShowProgressBar(false); // Reset progress bar visibility
+    setIsLoading(true);
 
     if (localLocation.trim() === '') {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
           (position) => {
             const { latitude, longitude } = position.coords;
-            dispatch(fetchCoordinatesAndWeather({ location: '', coords: { lat: latitude, lon: longitude } }));
+            dispatch(fetchCoordinatesAndWeather({ location: '', coords: { lat: latitude, lon: longitude } }))
+              .finally(() => setIsLoading(false));
           },
           (error) => {
             switch (error.code) {
@@ -42,18 +55,28 @@ const Search = ({ searchClassName }) => {
             }
             console.error('Error getting location:', error);
             setShowProgressBar(true); // Show progress bar on error
+            progressBarClear();
+            setIsLoading(false);
           }
         );
       } else {
         console.error('Geolocation is not supported by this browser.');
         setError('Geolocation is not supported by this browser.');
         setShowProgressBar(true); // Show progress bar on error
+        progressBarClear();
+        setIsLoading(false);
       }
     } else {
       dispatch(setLocation(localLocation));
-      dispatch(fetchCoordinatesAndWeather({ location: localLocation }));
+      dispatch(fetchCoordinatesAndWeather({ location: localLocation }))
+        .finally(() => setIsLoading(false));
     }
   };
+
+  const handleCloseAlert = () => {
+    setError('');
+    setShowProgressBar(false);
+  }
 
   // Update the error state if searchError changes
   useEffect(() => {
@@ -61,13 +84,7 @@ const Search = ({ searchClassName }) => {
       setError(searchError);
       setShowProgressBar(true); // Show progress bar on error
 
-      // Clear the error message after 1.5 seconds
-      const timer = setTimeout(() => {
-        setError('');
-        setShowProgressBar(false);
-      }, 1500);
-
-      return () => clearTimeout(timer);
+      progressBarClear();
     }
   }, [searchError]);
 
@@ -80,16 +97,22 @@ const Search = ({ searchClassName }) => {
         onChange={(e) => setLocalLocation(e.target.value)}
         placeholder="Enter location"
       />
-      <button className="buttonn" onClick={handleSearch}> Search </button>
+      {/* <button className="buttonn" onClick={handleSearch}> {isLoading ? <div class="loader"></div> : Search} </button> */}
+      <button className="buttonn" onClick={handleSearch}>
+        {isLoading ? <div className="loader"></div> : 'Search'}
+      </button>
+
+
       {error && (
         <div className="search-alert-container">
           <div class="search-alert-content-container">
-            <VscError size={24} className="icon" /> {/* react-icon */}
+            <VscError size={30} className="alert-icon" /> {/* react-icon */}
             <div className="content">
               <div className="column">
-                <span>Error</span> {/* message */}
-                <p>Some description</p> {/* description */}
+                <p>Error!</p> {/* message */}
+                <span>{error}</span> {/* description */}
               </div>
+              <IoClose className="alert-close-icon" onClick={handleCloseAlert} />
             </div>
           </div>
           {showProgressBar && <div className="progress-bar"></div>}
