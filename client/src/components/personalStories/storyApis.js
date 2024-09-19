@@ -1,5 +1,5 @@
 // api.js
-const apiUrl = process.env.SERVER_APP_URL;
+const apiUrl = process.env.REACT_APP_URL;
 console.log("API URL:", apiUrl);
 
 // Function to fetch stories
