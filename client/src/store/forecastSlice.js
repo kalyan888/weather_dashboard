@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const API_KEY = '49831a74458a2bd23c56452ba0af338e';
+const API_KEY = process.env.OPENWEATHER_API_KEY;
 
 export const fetchCoordinates = createAsyncThunk(
   'forecast/fetchCoordinates',
@@ -9,11 +9,11 @@ export const fetchCoordinates = createAsyncThunk(
     const encodedLocation = encodeURIComponent(location); // Encode the location
     const response = await axios.get(`http://api.openweathermap.org/geo/1.0/direct?q=${encodedLocation}&limit=1&appid=${API_KEY}`);
     console.log('fetchCoordinates response:', response);
-    
+
     if (response.data.length === 0) {
       throw new Error('Location not found');
     }
-    
+
     const data = response.data[0]; // Assuming the first result is the correct location
     return {
       lat: data.lat,
