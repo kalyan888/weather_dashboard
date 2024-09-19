@@ -447,4 +447,8 @@
     padding: 2px;
     right: 15%;
   }
+
+  .cloudy-theme .screen-nav-link-item {
+    color: #000;
+  }
 }
