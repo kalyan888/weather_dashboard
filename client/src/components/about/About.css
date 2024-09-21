@@ -33,6 +33,11 @@
   user-select: initial !important;
 }
 
+.portfolio-link {
+  color: blue;
+  text-decoration: underline;
+}
+
 .about-card h3 {
   margin-bottom: 10px;
   font-size: 18px;

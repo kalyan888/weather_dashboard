@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { IoClose } from "react-icons/io5";
+import { VscError } from "react-icons/vsc";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Routes, useLocation } from 'react-router-dom';
 import "./App.css";
+import About from "./components/about/About";
 import { routingPaths } from "./components/customs/constants";
 import Forecast from './components/forecast/Forecast';
 import Home from "./components/home/Home";
@@ -9,7 +12,6 @@ import NavBar from './components/navBar/NavBar';
 import OfflinePage from "./components/offlinePage/OfflinePage";
 import PersonalStory from './components/personalStories/PersonalStories';
 import { setAppliedTheme, toggleMode } from "./store/themeSlice";
-import About from "./components/about/About";
 
 const App = () => {
   const location = useLocation();
@@ -26,6 +28,33 @@ const App = () => {
   const [isOnline, setIsOnline] = useState(true);
 
   const [isCogOpen, setIsCogOpen] = useState(false);
+
+  // Alert Popup
+  const [error, setError] = useState('');
+  const [showProgressBar, setShowProgressBar] = useState(false);
+  const [timer, setTimer] = useState(null);
+
+  const progressBarClear = () => {
+    // Clear any existing timer
+    if (timer) {
+      clearTimeout(timer);
+    }
+
+    const newTimer = setTimeout(() => {
+      setError('');
+      setShowProgressBar(false);
+    }, 3000);
+
+    setTimer(newTimer);
+  };
+
+  const handleCloseAlert = () => {
+    setError('');
+    setShowProgressBar(false);
+    if (timer) {
+      clearTimeout(timer); // Clear timer if popup is closed
+    }
+  }
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -103,9 +132,24 @@ const App = () => {
             <NavBar isCogOpen={isCogOpen} setIsCogOpen={setIsCogOpen} />
           )}
 
+          {error && (
+            <div className="search-alert-container">
+              <div className="search-alert-content-container">
+                <VscError size={30} className="alert-icon" />
+                <div className="content">
+                  <div className="column">
+                    <p>Error!</p>
+                    <span>{error}</span>
+                  </div>
+                  <IoClose className="alert-close-icon" onClick={handleCloseAlert} />
+                </div>
+              </div>
+              {showProgressBar && <div className="progress-bar"></div>}
+            </div>
+          )}
           <Routes>
-            <Route exact path={routingPaths.home} element={<Home />} />
-            <Route exact path={routingPaths.forecast} element={<Forecast />} />
+            <Route exact path={routingPaths.home} element={<Home setError={setError} setShowProgressBar={setShowProgressBar} progressBarClear={progressBarClear} />} />
+            <Route exact path={routingPaths.forecast} element={<Forecast setError={setError} setShowProgressBar={setShowProgressBar} progressBarClear={progressBarClear} />} />
             <Route exact path={routingPaths.personalStory} element={<PersonalStory />} />
             <Route exact path={routingPaths.about} element={<About />} />
           </Routes>

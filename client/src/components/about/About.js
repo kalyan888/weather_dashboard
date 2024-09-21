@@ -91,6 +91,8 @@ const About = () => {
           <h3>Contact Information</h3>
           <span>
             If you have any feedback, suggestions, or need support, feel free to contact me at <a className='card-email' href="mailto:kalyanguttula3175@gmail.com">kalyanguttula3175@gmail.com</a>.
+            <br /><br /> You can also check out my portfolio at
+            <a className='portfolio-link' href="https://kalyanguttula.vercel.app" target="_blank" rel="noopener noreferrer"> Kalyan Portfolio</a>.
           </span>
         </div>
       </div>

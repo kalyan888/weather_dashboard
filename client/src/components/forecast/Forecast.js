@@ -13,7 +13,7 @@ import HumidityIndicator from './forecastComponents/Humidity';
 import WindDirection from './forecastComponents/WindDirection';
 import HumidityPrecipitationChart from './forecastComponents/HumidityPrecipitationChart';
 
-const Forecast = () => {
+const Forecast = ({ setError, setShowProgressBar, progressBarClear }) => {
   const appliedTheme = useSelector((state) => state.themesSlice.appliedTheme);
   // const dispatch = useDispatch();
   const weather = useSelector((state) => state?.search?.weather);
@@ -139,7 +139,7 @@ const Forecast = () => {
   return (
     <div className={`forecast-container ${appliedTheme}`}>
       <div className="fc-day-wise-container">
-        <Search searchClassName='forecast-search' />
+        <Search searchClassName='forecast-search' setError={setError} setShowProgressBar={setShowProgressBar} progressBarClear={progressBarClear} />
         <div className="day-wise-main-container">
           {isDesktop ? <div className="day-wise-scroll">
             {groupedForecast.map((daily, index) => (
