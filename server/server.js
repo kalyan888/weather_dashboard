@@ -13,7 +13,7 @@ dotenv.config();
 connectDB();
 
 // Middleware to parse JSON
-app.use(cors({ origin: process.env.REACT_APP_API_URL }))
+app.use(cors({ origin: process.env.CLIENT_URL }))
 
 app.use(morgan('dev')); // Dev dependency - status, time
 app.use(express.json());

@@ -86,7 +86,7 @@ const App = () => {
       dispatch(setAppliedTheme(retTheme));
       return retTheme;
     } else if (mode === 'seasonal') {
-      const seasonalTheme = classifyWeatherByTemperature(Math.round(weather?.main?.temp))
+      const seasonalTheme = classifyWeatherByTemperature(Math.round(weather?.main?.temp));
       dispatch(setAppliedTheme(seasonalTheme));
       return seasonalTheme;
     }
