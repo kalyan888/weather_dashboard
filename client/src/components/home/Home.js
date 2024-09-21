@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BiWater } from "react-icons/bi";
 // import { BsWater } from "react-icons/bs";
 import { FaWind } from "react-icons/fa";
+import { VscError } from "react-icons/vsc";
+import { IoClose } from "react-icons/io5";
 import { useSelector } from 'react-redux';
 // import { fetchCoordinatesAndWeather } from '../../store/searchSlice';
 import './Home.css';
@@ -13,13 +15,12 @@ const Home = () => {
   let deviceType = useDeviceType();
   let isDesktop = deviceType === 'desktop' ? true : false
   const weather = useSelector((state) => state?.search?.weather);
-
-
-  // const status = useSelector((state) => state.search.status);
-  // const error = useSelector((state) => state.search.error);
   const weatherType = weather?.weather?.[0].description
   const weatherTypeCapitalized = weatherType ? weatherType.charAt(0).toUpperCase() + weatherType.slice(1) : '';
 
+  const [error, setError] = useState('');
+  const [showProgressBar, setShowProgressBar] = useState(false);
+  const [timer, setTimer] = useState(null);
   // if (status === 'loading') {
   //   return <div>Loading...</div>;
   // }
@@ -28,9 +29,46 @@ const Home = () => {
   //   return <div>Error: {error}</div>;
   // }
 
+  const progressBarClear = () => {
+    // Clear any existing timer
+    if (timer) {
+      clearTimeout(timer);
+    }
+
+    const newTimer = setTimeout(() => {
+      setError('');
+      setShowProgressBar(false);
+    }, 3000);
+
+    setTimer(newTimer);
+  };
+
+  const handleCloseAlert = () => {
+    setError('');
+    setShowProgressBar(false);
+    if (timer) {
+      clearTimeout(timer); // Clear timer if popup is closed
+    }
+  }
+
   return (
     <div className='home-container'>
-      <Search searchClassName='home-search' />
+      {true && (
+        <div className="search-alert-container">
+          <div class="search-alert-content-container">
+            <VscError size={30} className="alert-icon" />
+            <div className="content">
+              <div className="column">
+                <p>Error!</p>
+                <span>{error}</span>
+              </div>
+              <IoClose className="alert-close-icon" onClick={handleCloseAlert} />
+            </div>
+          </div>
+          {showProgressBar && <div className="progress-bar"></div>}
+        </div>
+      )}
+      <Search searchClassName='home-search' setError={setError} setShowProgressBar={setShowProgressBar} progressBarClear={progressBarClear} />
       <>
         <div className="weather-container">
           {/* <Greeting /> */}

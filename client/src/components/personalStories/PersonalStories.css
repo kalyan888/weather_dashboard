@@ -353,12 +353,13 @@
 
 @media (max-width: 767px) {
     .weather-stories-container {
-        padding: 55px 40px 40px 40px;
+        padding: 55px 10px 35px 10px;
         user-select: none;
     }
 
     .story-above-container h1 {
         font-size: 22px;
+        margin: 5px 0;
     }
 
     .story-above-container span {

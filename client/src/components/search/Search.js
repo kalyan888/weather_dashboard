@@ -1,28 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { VscError } from "react-icons/vsc";
-import { IoClose } from "react-icons/io5";
 import { fetchCoordinatesAndWeather, setLocation } from '../../store/searchSlice'; //, setCoords
 import "./Search.css";
 
-const Search = ({ searchClassName }) => {
+const Search = ({ searchClassName, setError, setShowProgressBar, progressBarClear }) => {
 
   const dispatch = useDispatch();
   const location = useSelector((state) => state.search.location);
   const searchError = useSelector((state) => state.search.error);
   const [localLocation, setLocalLocation] = useState(location);
-  const [error, setError] = useState('');
-  const [showProgressBar, setShowProgressBar] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-
-  const progressBarClear = () => {
-    const timer = setTimeout(() => {
-      setError(''); // ''
-      setShowProgressBar(false); // false
-    }, 3000);
-
-    return () => clearTimeout(timer);
-  }
 
   const handleSearch = () => {
     setError(''); // Clear any previous error message
@@ -73,11 +60,6 @@ const Search = ({ searchClassName }) => {
     }
   };
 
-  const handleCloseAlert = () => {
-    setError('');
-    setShowProgressBar(false);
-  }
-
   // Update the error state if searchError changes
   useEffect(() => {
     if (searchError) {
@@ -101,23 +83,6 @@ const Search = ({ searchClassName }) => {
       <button className="buttonn" onClick={handleSearch}>
         {isLoading ? <div className="loader"></div> : 'Search'}
       </button>
-
-
-      {error && (
-        <div className="search-alert-container">
-          <div class="search-alert-content-container">
-            <VscError size={30} className="alert-icon" /> {/* react-icon */}
-            <div className="content">
-              <div className="column">
-                <p>Error!</p> {/* message */}
-                <span>{error}</span> {/* description */}
-              </div>
-              <IoClose className="alert-close-icon" onClick={handleCloseAlert} />
-            </div>
-          </div>
-          {showProgressBar && <div className="progress-bar"></div>}
-        </div>
-      )}
     </div>
   );
 };
