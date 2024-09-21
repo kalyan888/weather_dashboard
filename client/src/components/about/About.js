@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import './About.css';
+import { useDeviceType } from '../customs/constants';
 
 const About = () => {
   const { appliedTheme } = useSelector((state) => state.themesSlice);
+  let deviceType = useDeviceType();
+  let isDesktop = deviceType === 'desktop' ? true : false;
 
   const [x, setX] = useState(0);
   const [y, setY] = useState(0);
@@ -89,7 +92,7 @@ const About = () => {
         <div className="about-card" style={{ '--clr': cardColors[5], '--x': `${x}px`, '--y': `${y}px` }} onMouseMove={handleMouseMove}>
           <h3>Contact Information</h3>
           <span>
-            If you have any feedback, suggestions, or need support, feel free to contact me at <a className='card-email' href="mailto:kalyanguttula3175@gmail.com">kalyanguttula3175@gmail.com.</a>
+            If you have any feedback, suggestions, or need support, feel free to contact me at {!isDesktop ? <br /> : <></>}<a className='card-email' href="mailto:kalyanguttula3175@gmail.com">kalyanguttula3175@gmail.com.</a>
             <br /><br /> Checkout my portfolio at
             <a className='portfolio-link' href="https://kalyanguttula.vercel.app" target="_blank" rel="noopener noreferrer"> Kalyan Portfolio.</a>
           </span>
