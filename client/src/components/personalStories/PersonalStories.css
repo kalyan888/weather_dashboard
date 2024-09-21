@@ -60,6 +60,13 @@
     padding: 0 5px 0 0;
 }
 
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 12%;
+}
+
 .search-field {
     width: 108%;
     padding: 10px 40px 10px 10px;
@@ -160,6 +167,8 @@
     border-radius: 0 0 10px 10px;
     margin-top: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    word-wrap: break-word;
 }
 
 .bottom-container::-webkit-scrollbar {
@@ -399,11 +408,15 @@
     .user-text {
         width: 95%;
         max-height: 190px;
-        margin: 30px 0 50px 10px;
+        margin: 30px 0 30px 10px;
         padding: 0 15px 15px 10px;
     }
 
     .story-modal-header button {
         margin-top: -2px;
+    }
+
+    .loading-container {
+        margin-top: 35%;
     }
 }

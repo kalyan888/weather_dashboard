@@ -55,7 +55,7 @@ const Home = () => {
     <div className='home-container'>
       {error && (
         <div className="search-alert-container">
-          <div class="search-alert-content-container">
+          <div className="search-alert-content-container">
             <VscError size={30} className="alert-icon" />
             <div className="content">
               <div className="column">

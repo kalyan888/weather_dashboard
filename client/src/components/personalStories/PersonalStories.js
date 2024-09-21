@@ -98,23 +98,28 @@ const PersonalStory = () => {
           {/* Bottom Container */}
           <div className="bottom-container">
             <div className="story-cards-container">
-              {filteredStories.map((story, index) => (
-                <div className={`story-card ${expandedStoryIndex === index ? 'expanded' : ''}`} key={index}>
-                  <div className="story-card-header" onClick={() => toggleExpand(index)}>
-                    <h1>{story.name}</h1>
-                    <p>{story.location}</p>
-                    {/* <h1>{story.name}  -{story.location}</h1> */}
-                    <button className="expand-button">
-                      {expandedStoryIndex === index ? 'Collapse' : 'View Story'}
-                    </button>
-                  </div>
-                  <p className={`story-description ${expandedStoryIndex === index ? 'full' : 'truncated'}`}>
-                    {/* {story.description} */}
-                    {convertNewlinesToBr(story.description)}
-                  </p>
+              {filteredStories.length === 0 ? (
+                <div className="loading-container">
+                  <p>Loading stories...</p>
                 </div>
-              ))}
+              ) : (
+                filteredStories.map((story, index) => (
+                  <div className={`story-card ${expandedStoryIndex === index ? 'expanded' : ''}`} key={index}>
+                    <div className="story-card-header" onClick={() => toggleExpand(index)}>
+                      <h1>{story.name}</h1>
+                      <p>{story.location}</p>
+                      <button className="expand-button">
+                        {expandedStoryIndex === index ? 'Collapse' : 'View Story'}
+                      </button>
+                    </div>
+                    <p className={`story-description ${expandedStoryIndex === index ? 'full' : 'truncated'}`}>
+                      {convertNewlinesToBr(story.description)}
+                    </p>
+                  </div>
+                ))
+              )}
             </div>
+
           </div>
         </div>
       </div></>

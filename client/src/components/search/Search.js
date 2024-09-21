@@ -79,7 +79,6 @@ const Search = ({ searchClassName, setError, setShowProgressBar, progressBarClea
         onChange={(e) => setLocalLocation(e.target.value)}
         placeholder="Enter location"
       />
-      {/* <button className="buttonn" onClick={handleSearch}> {isLoading ? <div class="loader"></div> : Search} </button> */}
       <button className="buttonn" onClick={handleSearch}>
         {isLoading ? <div className="loader"></div> : 'Search'}
       </button>
