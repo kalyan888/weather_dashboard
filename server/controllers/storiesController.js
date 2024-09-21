@@ -7,7 +7,6 @@ const homePath = async (req, res) => {
 const storiesGetController = async (req, res) => {
     try {
         const stories = await Story.find(); // This retrieves all documents from the collection
-        console.log('stories: ', stories);
 
         // Return data in the response
         return res.status(200).json({ success: true, data: stories });

@@ -21,7 +21,7 @@ app.use(express.json());
 // Use routes
 app.use('/personalStories', require('./routes/Stories'));
 
-app.get('/test', (req, res) => res.send('Test successful'));
+// app.get('/test', (req, res) => res.send('Test successful'));
 
 //Port
 const PORT = process.env.PORT || 5000;

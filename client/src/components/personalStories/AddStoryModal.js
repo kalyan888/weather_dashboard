@@ -36,14 +36,14 @@ const AddStoryModal = ({ setIsModalOpen, onRequestClose, setStories }) => {
         const { name, location, description } = e.target.elements;
 
         // Validate name
-        if (name.value.trim() === "") {
+        if (name.value.trim() === "" || name.value.length < 3) {
             setFieldsValidation(prev => ({ ...prev, validName: false }));
             navigator.vibrate([200, 100, 200]);
             return;
         }
 
         // Validate location
-        if (location.value.trim() === "") {
+        if (location.value.trim() === "" || location.value.length < 4) {
             setFieldsValidation(prev => ({ ...prev, validName: true, validLocation: false }));
             navigator.vibrate([200, 100, 200]);
             return;
