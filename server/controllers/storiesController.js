@@ -1,17 +1,13 @@
 const Story = require("../models/Story");
 
 const homePath = async (req, res) => {
-    try {
-        return res.send('Server is running');
-    }
-    catch (err) {
-        console.error('Error:', err);
-    }
+    return res.send('Server is running');
 }
 
 const storiesGetController = async (req, res) => {
     try {
         const stories = await Story.find(); // This retrieves all documents from the collection
+        console.log('stories: ', stories);
 
         // Return data in the response
         return res.status(200).json({ success: true, data: stories });
