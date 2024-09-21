@@ -359,7 +359,7 @@
 
     .story-above-container h1 {
         font-size: 22px;
-        margin: 5px 0;
+        margin: 10px 0 5px 0;
     }
 
     .story-above-container span {
@@ -371,7 +371,7 @@
     }
 
     .story-below-container {
-        height: 54vh;
+        height: 58vh;
         padding: 17px;
     }
 
