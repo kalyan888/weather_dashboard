@@ -6,7 +6,7 @@ const { homePath, storiesGetController, storiesPostController } = require('../co
 router.get('/api', homePath);
 
 // Route to get all stories
-router.get('/api/personalStories/stories', storiesGetController);
+router.get('/api/stories', storiesGetController);
 
 // Route to add a new story
 router.post('/api/stories', storiesPostController);

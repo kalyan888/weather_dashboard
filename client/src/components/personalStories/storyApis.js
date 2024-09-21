@@ -1,6 +1,6 @@
 // api.js
 const apiUrl = process.env.REACT_APP_URL;
-// console.log("API URL:", apiUrl);
+console.log("API URL:", apiUrl);
 
 // Function to fetch stories
 export const fetchStories = async () => {
@@ -12,6 +12,7 @@ export const fetchStories = async () => {
         }
 
         const result = await response.json();
+        console.log('result: ', result);
         return { success: true, data: result.data };
     } catch (error) {
         return { success: false, error: error.message };
