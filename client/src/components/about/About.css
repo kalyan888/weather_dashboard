@@ -29,13 +29,24 @@
   user-select: none;
 }
 
+.about-card a {
+  position: absolute;
+  z-index: 1;
+  margin: 2px 0 0 5px;
+}
+
 .card-email {
+  font-weight: 500;
   user-select: initial !important;
 }
 
 .portfolio-link {
-  color: blue;
-  text-decoration: underline;
+  font-weight: 500;
+  color: #007bff !important;
+}
+
+.portfolio-link:hover {
+  text-decoration: underline !important;
 }
 
 .about-card h3 {
@@ -112,6 +123,10 @@
 
   .about-card span {
     font-size: 12px;
+  }
+
+  .about-card a {
+    margin: 4px 0 0 5px;
   }
 }
 

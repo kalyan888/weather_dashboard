@@ -64,7 +64,7 @@ const AddStoryModal = ({ setIsModalOpen, onRequestClose, setStories }) => {
         };
 
         const result = await addStory(storyData);
-        console.log('result: ', result);
+
         if (result.success) {
             name.value = "";
             location.value = "";

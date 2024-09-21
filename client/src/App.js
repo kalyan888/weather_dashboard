@@ -101,10 +101,12 @@ const App = () => {
       return 'summer-theme';
     } else if (weather?.weather?.[0]?.description.includes('cloud')) {
       return 'cloudy-theme';
-    } else if (weather?.weather?.[0]?.description.includes('rain')) {
+    } else if (weather?.weather?.[0]?.description.includes('rain', 'storm', 'drizzle')) {
       return 'rainy-theme';
-    } else {
+    } else if (weather?.weather?.[0]?.description.includes('snow', 'mist', 'sleet', 'smoke', 'haze', 'fog')) {
       return 'winter-theme';
+    } else {
+      return 'summer-theme';
     }
   };
 
