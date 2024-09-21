@@ -15,6 +15,10 @@
     ],
     "routes": [
         {
+            "src": "/personalStories/api/(.*)",
+            "dest": "/server.js"
+        },
+        {
             "src": "/api/(.*)",
             "dest": "/server.js"
         },
