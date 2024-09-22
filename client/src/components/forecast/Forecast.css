@@ -86,6 +86,10 @@
     background-color: rgba(0, 0, 0, 0.5);
 }
 
+.day-wise-card-active {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
 /* .fc-rb-wind-container:hover, .hourly-forecast-items:hover {
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0.1);

@@ -28,7 +28,8 @@ const Forecast = ({ setError, setShowProgressBar, progressBarClear }) => {
   // console.log('selectedDay: ', selectedDay);
 
   const [groupedForecast, setGroupedForecast] = useState([]);
-  const [sunriseDirection, setSunriseDirection] = useState('')
+  const [sunriseDirection, setSunriseDirection] = useState('');
+  const [activeIndex, setActiveIndex] = useState(null);
 
   useEffect(() => {
     const direction = getSunriseDirection(weather?.coord?.lat);
@@ -69,7 +70,8 @@ const Forecast = ({ setError, setShowProgressBar, progressBarClear }) => {
   }, [forecast]);
 
   // Function to handle weather card click
-  const handleCardClick = (day) => {
+  const handleCardClick = (day, index) => {
+    setActiveIndex(index);
     setSelectedDay(day);
   };
 
@@ -82,11 +84,12 @@ const Forecast = ({ setError, setShowProgressBar, progressBarClear }) => {
   };
 
 
-  const dayWiseWeatherCard = (daily) => {
+  const dayWiseWeatherCard = (daily, index) => {
     const weatherIcon = getWeatherType(daily[0]?.weather?.[0]?.id);
+    const isActive = activeIndex === index;
 
     return (
-      <div className="fc-sub-day-wise-cont" onClick={() => handleCardClick(daily)}>
+      <div className={`fc-sub-day-wise-cont ${isActive ? 'day-wise-card-active' : ''}`} onClick={() => handleCardClick(daily, index)}>
         <div className="weather-card">
           <div className="weather-icon">
             <img src={weatherIcon} alt="Weather Icon" />
@@ -144,7 +147,7 @@ const Forecast = ({ setError, setShowProgressBar, progressBarClear }) => {
           {isDesktop ? <div className="day-wise-scroll">
             {groupedForecast.map((daily, index) => (
               <React.Fragment key={index}>
-                {dayWiseWeatherCard(daily)}
+                {dayWiseWeatherCard(daily, index)}
               </React.Fragment>
             ))}
           </div> : <>{selectedDay && fcRtWeatherCard(selectedDay)}</>}
@@ -158,7 +161,7 @@ const Forecast = ({ setError, setShowProgressBar, progressBarClear }) => {
               {isDesktop ? <>{selectedDay && fcRtWeatherCard(selectedDay)}</> : <div className="day-wise-scroll">
                 {groupedForecast.map((daily, index) => (
                   <React.Fragment key={index}>
-                    {dayWiseWeatherCard(daily)}
+                    {dayWiseWeatherCard(daily, index)}
                   </React.Fragment>
                 ))}
               </div>}
