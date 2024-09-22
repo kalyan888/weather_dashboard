@@ -100,7 +100,8 @@ const App = () => {
     if (weather?.weather?.[0]?.description.includes('sun', 'sky')) {
       return 'summer-theme';
     } else if (weather?.weather?.[0]?.description.includes('cloud')) {
-      return 'cloudy-theme';
+      // return 'cloudy-theme';
+      return 'rainy-theme';
     } else if (weather?.weather?.[0]?.description.includes('rain', 'storm', 'drizzle')) {
       return 'rainy-theme';
     } else if (weather?.weather?.[0]?.description.includes('snow', 'mist', 'sleet', 'smoke', 'haze', 'fog')) {
