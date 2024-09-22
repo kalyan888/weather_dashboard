@@ -44,6 +44,9 @@ const Search = ({ searchClassName, setError, setShowProgressBar, progressBarClea
             setShowProgressBar(true); // Show progress bar on error
             progressBarClear();
             setIsLoading(false);
+          },
+          {
+            enableHighAccuracy: true
           }
         );
       } else {
