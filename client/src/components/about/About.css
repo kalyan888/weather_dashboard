@@ -29,12 +29,6 @@
   user-select: none;
 }
 
-.about-card a {
-  position: absolute;
-  z-index: 1;
-  margin: 2px 0 0 5px;
-}
-
 .card-email {
   font-weight: 500;
   user-select: initial !important;
@@ -64,6 +58,9 @@
 
 .about-card a {
   color: #007bff;
+  position: absolute;
+  z-index: 1;
+  margin: 2px 0 0 5px;
   text-decoration: none;
 }
 
@@ -127,6 +124,10 @@
 
   .about-card a {
     margin: 4px 0 0 5px;
+  }
+
+  .card-email {
+    margin-left: 0 !important;
   }
 }
 
