@@ -278,6 +278,7 @@
 .field-validation,
 .text-area-validation {
     /* animation: shake 0.5s ease-in-out 2; */
+    color: var(--validation-red) !important;
     border-bottom: 1px solid var(--validation-red) !important;
 }
 
