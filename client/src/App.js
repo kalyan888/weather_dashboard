@@ -91,18 +91,26 @@ const App = () => {
 
   // Feed the temp to get season
   const classifyWeatherByTemperature = () => {
-    if (weather?.weather?.[0]?.description.includes('sun', 'sky')) {
-      return 'summer-theme';
-    } else if (weather?.weather?.[0]?.description.includes('cloud')) {
-      // return 'cloudy-theme';
-      return 'rainy-theme';
-    } else if (weather?.weather?.[0]?.description.includes('rain', 'storm', 'drizzle')) {
-      return 'rainy-theme';
-    } else if (weather?.weather?.[0]?.description.includes('snow', 'mist', 'sleet', 'smoke', 'haze', 'fog')) {
-      return 'winter-theme';
-    } else {
-      return 'summer-theme';
+    const description = weather?.weather?.[0]?.description;
+
+    if (description) {
+      const lowerCaseDescription = description.toLowerCase();
+
+      if (['sun', 'sky'].some(word => lowerCaseDescription.includes(word))) {
+        return 'summer-theme';
+      } else if (lowerCaseDescription.includes('cloud')) {
+        // return 'cloudy-theme';
+        return 'rainy-theme';
+      } else if (['rain', 'storm', 'drizzle'].some(word => lowerCaseDescription.includes(word))) {
+        return 'rainy-theme';
+      } else if (['snow', 'mist', 'sleet', 'smoke', 'haze', 'fog'].some(word => lowerCaseDescription.includes(word))) {
+        return 'winter-theme';
+      } else {
+        return 'summer-theme';
+      }
     }
+    // Fallback if description is not defined
+    return 'rainy-theme';
   };
 
   // Determine theme based on mode and theme state
