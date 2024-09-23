@@ -12,7 +12,6 @@ const Greeting = () => {
   const country = useSelector((state) => state?.search?.weather?.sys?.country);
   const coords = useSelector((state) => state.search.coords);
   const search = useSelector((state) => state.search);
-  // console.log('search: ', search);
   const currentDate = search?.weather?.dt
   const [countryName, setCountryName] = useState('');
   const [initialLoad, setInitialLoad] = useState(true);
@@ -62,7 +61,7 @@ const Greeting = () => {
 
       fetchLocation();
     }
-  }, [dispatch, initialLoad, coords]);
+  }, []);
 
   useEffect(() => {
     // const formattedDate = moment.unix(currentDate).format('MMMM D, YYYY h:mm A');

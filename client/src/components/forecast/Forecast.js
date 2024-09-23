@@ -1,35 +1,29 @@
 import { addDays, format, isSameDay, startOfDay } from 'date-fns';
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-// import sunImg from '../../assets/icons/overcast-clouds.png';
-// import cloudyTopImg from '../../assets/images/cloudy-bg.jpg';
-import { SlArrowRightCircle } from "react-icons/sl";
 import { FaEye } from "react-icons/fa";
+import { SlArrowRightCircle } from "react-icons/sl";
+import { useSelector } from 'react-redux';
+import { getWeatherType, useDeviceType } from '../customs/constants';
 import Search from '../search/Search';
 import "./Forecast.css";
-// import windArrImg from '../../assets/icons/wind-arrow.png';
-import { getWeatherType, useDeviceType } from '../customs/constants';
 import HumidityIndicator from './forecastComponents/Humidity';
-import WindDirection from './forecastComponents/WindDirection';
 import HumidityPrecipitationChart from './forecastComponents/HumidityPrecipitationChart';
+import WindDirection from './forecastComponents/WindDirection';
 
 const Forecast = ({ setError, setShowProgressBar, progressBarClear }) => {
   const appliedTheme = useSelector((state) => state.themesSlice.appliedTheme);
-  // const dispatch = useDispatch();
   const weather = useSelector((state) => state?.search?.weather);
-  // console.log('weather: ', weather);
   const forecast = useSelector((state) => state?.search?.forecast);
-  // console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaa', forecast);
   const deviceType = useDeviceType();
   const isDesktop = deviceType === 'desktop';
 
   // State to store the selected day's data
   const [selectedDay, setSelectedDay] = useState(null);
-  // console.log('selectedDay: ', selectedDay);
 
   const [groupedForecast, setGroupedForecast] = useState([]);
   const [sunriseDirection, setSunriseDirection] = useState('');
-  const [activeIndex, setActiveIndex] = useState(null);
+
+  const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
     const direction = getSunriseDirection(weather?.coord?.lat);
@@ -195,7 +189,6 @@ const Forecast = ({ setError, setShowProgressBar, progressBarClear }) => {
                   <div className="fc-rb-wind-speed fc-rb-wind">
                     <span>{selectedDay?.[0]?.wind?.speed != null ? Math.round(selectedDay[0].wind.speed) : "--"}</span>
                     <span className='fc-rb-wind-speed-desc fc-rb-wind-speed-fs'> km/h</span>
-                    {/* <p className="fc-rb-wind-description">Light • From <span className="fc-rb-wind-desc-span">east</span></p></div> */}
                     <span className="fc-rb-wind-description fc-rb-wind-speed-descrptn">Light • From <span className="fc-rb-wind-desc-span">{sunriseDirection}</span></span></div>
 
                   <WindDirection angle={selectedDay?.[0]?.wind?.deg != null ? selectedDay[0].wind.deg : 0} />
@@ -206,7 +199,6 @@ const Forecast = ({ setError, setShowProgressBar, progressBarClear }) => {
                   <p className="fc-rb-wind-title">Average Humidity</p>
                 </div>
                 <div className="fc-rb-humidity-body">
-                  {/* <img src="wind-icon.png" alt="Wind Direction" className="fc-rb-wind-icon" /> */}
                   <span className="fc-rb-wind-speed fc-rb-humidity">{selectedDay?.[0]?.main?.humidity != null ? selectedDay[0].main.humidity : "--"}%</span>
                   <HumidityIndicator type='humidity' humidity={selectedDay?.[0]?.main?.humidity ? selectedDay[0].main.humidity : 0} />
                 </div>

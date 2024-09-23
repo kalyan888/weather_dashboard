@@ -53,9 +53,6 @@ const HumidityPrecipitationProgressBars = ({ data, selectedDay }) => {
                 precipitation: item?.rain ? item.rain['3h'] : 0,
             }))
             : [{ time: 'N/A', precipitation: 0 }]; // Default value if empty
-
-        // console.log('humidityList: ', humidityList);
-        // console.log('precipitationList: ', precipitationList);
         setHourlyHumidityList(humidityList);
         setHourlyPrecipitationList(precipitationList);
     }, [data, selectedDay]);

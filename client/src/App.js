@@ -19,11 +19,6 @@ const App = () => {
 
   const { mode, theme } = useSelector((state) => state.themesSlice);
   const weather = useSelector((state) => state?.search?.weather);
-  // console.log('weather: ', weather);
-  // const forecast = useSelector((state) => state?.search?.forecast);
-  // const all = useSelector((state) => state);
-  // console.log('all: ', all);
-
 
   const [isOnline, setIsOnline] = useState(true);
 
@@ -96,7 +91,6 @@ const App = () => {
 
   // Feed the temp to get season
   const classifyWeatherByTemperature = () => {
-    // console.log('weather?.weather?.[0]?.description: ', weather?.weather?.[0]?.description);
     if (weather?.weather?.[0]?.description.includes('sun', 'sky')) {
       return 'summer-theme';
     } else if (weather?.weather?.[0]?.description.includes('cloud')) {

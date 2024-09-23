@@ -1,6 +1,5 @@
 // api.js
 const apiUrl = process.env.REACT_APP_URL;
-console.log("API URL:", apiUrl);
 
 // Function to fetch stories
 export const fetchStories = async () => {
@@ -12,7 +11,6 @@ export const fetchStories = async () => {
         }
 
         const result = await response.json();
-        console.log('result: ', result);
         return { success: true, data: result.data };
     } catch (error) {
         return { success: false, error: error.message };
@@ -22,7 +20,6 @@ export const fetchStories = async () => {
 // Function to add a story
 export const addStory = async (story) => {
     try {
-        // const response = await fetch('http://localhost:8080/personalStories/stories', {
         const response = await fetch(`${apiUrl}/personalStories/api/stories`, {
             method: 'POST',
             headers: {

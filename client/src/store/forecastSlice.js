@@ -8,7 +8,6 @@ export const fetchCoordinates = createAsyncThunk(
   async (location) => {
     const encodedLocation = encodeURIComponent(location); // Encode the location
     const response = await axios.get(`http://api.openweathermap.org/geo/1.0/direct?q=${encodedLocation}&limit=1&appid=${API_KEY}`);
-    console.log('fetchCoordinates response:', response);
 
     if (response.data.length === 0) {
       throw new Error('Location not found');
@@ -26,7 +25,6 @@ export const fetchForecastByLocation = createAsyncThunk(
   'forecast/fetchForecastByLocation',
   async ({ lat, lon }) => {
     const response = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`);
-    console.log('fetchForecastByLocation response:', response);
     return response.data;
   }
 );

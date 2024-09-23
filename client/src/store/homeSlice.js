@@ -7,7 +7,6 @@ export const fetchWeatherByLocation = createAsyncThunk(
   'home/fetchWeatherByLocation',
   async (location) => {
     const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${API_KEY}`);
-    console.log('home weather', response);
     return response.data;
   }
 );

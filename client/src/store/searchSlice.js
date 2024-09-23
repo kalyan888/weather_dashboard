@@ -11,29 +11,29 @@ export const fetchCoordinatesAndWeather = createAsyncThunk(
       let locationName = location;
 
       if (coords) {
-        const response = await axios.get(`https://api.openweathermap.org/geo/1.0/reverse?lat=${coords.lat}&lon=${coords.lon}&limit=1&appid=${API_KEY}`);
-        if (response.data.length === 0) {
+        const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coords.lat}&lon=${coords.lon}&units=metric&limit=1&appid=${API_KEY}`);
+
+        if (!response.data || Object.keys(response.data).length === 0) {
           return rejectWithValue('Coordinates not found');
         }
-        const data = response.data[0];
-        lat = data.lat;
-        lon = data.lon;
+        const data = response.data;
+        lat = data?.coord?.lat;
+        lon = data?.coord?.lon;
         locationName = data.name;
       } else {
-        const response = await axios.get(`https://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=1&appid=${API_KEY}`);
-        if (response.data.length === 0) {
+        const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${API_KEY}`);
+
+        if (!response.data || Object.keys(response.data).length === 0) {
           return rejectWithValue('Location not found');
         }
-        const data = response.data[0];
-        lat = data.lat;
-        lon = data.lon;
+        const data = response.data;
+        lat = data?.coord?.lat;
+        lon = data?.coord?.lon;
         locationName = data.name;
       }
 
       const weatherResponse = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`);
-      // console.log('1111111111111111111111', weatherResponse);
       const forecastResponse = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`);
-      // console.log('forecastResponse: ', forecastResponse);
       const country = weatherResponse.data.sys.country;
 
       const countryResponse = await axios.get(`https://restcountries.com/v3.1/alpha/${country}`);
@@ -47,7 +47,26 @@ export const fetchCoordinatesAndWeather = createAsyncThunk(
         coords: { lat, lon }
       };
     } catch (error) {
-      return rejectWithValue(error.response ? error.response.data : error.message);
+      // Destructure `cod` and `message` from the error response if available
+      const { cod, message } = error.response?.data || {};
+
+      // Handle different error codes and types
+      if (cod === '404') {
+        return rejectWithValue('Location not found. Please check the location name.');
+      } else if (cod === '401') {
+        return rejectWithValue('Invalid API key. Please check your OpenWeather API key.');
+      } else if (cod === '429') {
+        return rejectWithValue('Too many requests. You have exceeded the API call limit.');
+      } else if (error.response) {
+        // Handle other specific error messages if available
+        return rejectWithValue(message || 'An unknown error occurred with the weather service.');
+      } else if (error.request) {
+        // Network-related error
+        return rejectWithValue('Network error. Please check your internet connection.');
+      } else {
+        // Any other type of error (e.g., client-side issues)
+        return rejectWithValue(error.message || 'An unexpected error occurred.');
+      }
     }
   }
 );
@@ -96,3 +115,26 @@ const searchSlice = createSlice({
 export const { setLocation, setCoords } = searchSlice.actions;
 
 export default searchSlice.reducer;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// For precise location - not matching with openweathermap api
+// const response = await axios.get(`https://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=1&appid=${API_KEY}`); - 29
+// const data = response.data[0]; - 34
+// lat = data.lat;
+// lon = data.lon;
+// locationName = data.name;
+
+// const response = await axios.get(`https://api.openweathermap.org/geo/1.0/reverse?lat=${coords.lat}&lon=${coords.lon}&limit=1&appid=${API_KEY}`);
+// const response = await axios.get(`https://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=1&appid=${API_KEY}`);
