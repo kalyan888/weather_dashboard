@@ -196,7 +196,7 @@
 
 .story-modal {
     position: absolute;
-    height: 58%;
+    height: 65%;
     width: 80%;
     top: 14%;
     left: 10%;
@@ -401,7 +401,7 @@
     }
 
     .story-modal {
-        height: 60%;
+        height: 65%;
         width: 94%;
         left: 3%;
     }

@@ -115,21 +115,22 @@ ul {
   background-repeat: no-repeat;
 }
 
-.app::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+*::-webkit-scrollbar {
+  width: 4px;
+  /* height: 6px; */
 }
 
-.app::-webkit-scrollbar-track {
-  background: var(--scrollbar-track);
+*::-webkit-scrollbar-track {
+  background-color: #ced9f3;
+  border-radius: 10px;
 }
 
-.app::-webkit-scrollbar-thumb {
-  background: var(--scrollbar-thumb);
-  border-radius: 5px;
+*::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 10px;
 }
 
-.app::-webkit-scrollbar-thumb:hover {
+*::-webkit-scrollbar-thumb:hover {
   background: var(--scrollbar-thumb-hover);
 }
 

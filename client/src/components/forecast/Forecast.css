@@ -38,6 +38,25 @@
     /* background: rgb(201, 241, 5); */
 }
 
+.fc-right-container::-webkit-scrollbar,
+.fc-sub-day-wise-cont::-webkit-scrollbar {
+    width: 5px;
+}
+
+.fc-right-container::-webkit-scrollbar-track,
+.fc-sub-day-wise-cont::-webkit-scrollbar-track {
+    background-color: #ced9f3;
+    border-radius: 20px !important;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0 / 30%);
+}
+
+.fc-right-container::-webkit-scrollbar-thumb,
+.fc-sub-day-wise-cont::-webkit-scrollbar-thumb {
+    background-color: #f1b24a;
+    border-radius: 10px !important;
+    box-shadow: inset 0 0 7px rgba(0, 0, 0 / 30%);
+}
+
 .daily-container {
     /* background: mediumspringgreen; */
     height: 175px;
@@ -78,7 +97,10 @@
     flex-direction: column;
     /* top: 10vh; */
     /* background: coral; */
-    overflow-y: auto;
+}
+
+.fc-sub-day-wise-cont::-webkit-scrollbar-thumb {
+    background-color: #c1c1c1;
 }
 
 .fc-sub-day-wise-cont:hover {
@@ -290,11 +312,6 @@
     height: calc(92vh - 355px);
 }
 
-.fc-rbr-container {
-    /* background-color: #2fd5ff; */
-}
-
-
 
 /***************************** fc-rb-cards *******************************/
 
@@ -319,6 +336,7 @@
     background-color: rgba(255, 255, 255, 0.2);
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.5);
+    overflow: auto;
 }
 
 .fc-rb-wind-header {
