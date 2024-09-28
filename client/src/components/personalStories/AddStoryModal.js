@@ -90,33 +90,35 @@ const AddStoryModal = ({ setIsModalOpen, onRequestClose, setStories }) => {
                 <button onClick={onClickClose}><IoClose /></button>
             </div>
             <form className='story-modal-form-con' ref={form} onSubmit={onClickAddStory}>
-                <div className="story-modal-above-container">
-                    <input
-                        className={`user-details ${!validName ? 'field-validation' : ''}`}
-                        type="text"
-                        name="name"
-                        placeholder={`${validName ? 'Name' : 'Please enter your name!'}`}
-                        maxLength={40}
-                        autoComplete='off'
-                    />
-                    <input
-                        className={`user-details ${!validLocation ? 'field-validation' : ''}`}
-                        type="text"
-                        name="location"
-                        placeholder={`${validLocation ? 'Location: State, Country.' : 'Don’t forget your location!'}`}
-                        maxLength={40}
+                <div>
+                    <div className="story-modal-above-container">
+                        <input
+                            className={`user-details ${!validName ? 'field-validation' : ''}`}
+                            type="text"
+                            name="name"
+                            placeholder={`${validName ? 'Name' : 'Please enter your name!'}`}
+                            maxLength={40}
+                            autoComplete='off'
+                        />
+                        <input
+                            className={`user-details ${!validLocation ? 'field-validation' : ''}`}
+                            type="text"
+                            name="location"
+                            placeholder={`${validLocation ? 'Location: State, Country.' : 'Don’t forget your location!'}`}
+                            maxLength={40}
+                            autoComplete='off'
+                        />
+                    </div>
+                    <textarea
+                        className={`user-text ${!validDescription ? 'text-area-validation' : ''}`}
+                        rows="8"
+                        cols="50"
+                        name="description"
+                        placeholder={`${validDescription ? 'Share your amazing story...' : 'We’d love to hear your story!'}`}
+                        maxLength={4000}
                         autoComplete='off'
                     />
                 </div>
-                <textarea
-                    className={`user-text ${!validDescription ? 'text-area-validation' : ''}`}
-                    rows="8"
-                    cols="50"
-                    name="description"
-                    placeholder={`${validDescription ? 'Share your amazing story...' : 'We’d love to hear your story!'}`}
-                    maxLength={4000}
-                    autoComplete='off'
-                />
                 <div className="modal-buttons">
                     <button type="button" className='add-story-modal-btn clear-btn' onClick={onClickClear}>Clear</button>
                     <button type="submit" className='add-story-modal-btn add-btn'>Add</button>

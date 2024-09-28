@@ -216,6 +216,11 @@
 
 .story-modal-form-con {
     padding: 5px 10px;
+    height: 85%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: auto;
 }
 
 .story-modal-header h2 {
