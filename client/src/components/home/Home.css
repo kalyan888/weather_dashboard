@@ -238,9 +238,28 @@
     }
 }
 
-/* ************* Larger Devices ***************  */
-@media screen and (min-width: 768px) {
+/* Tablets and small laptops (768px to 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .weather-container {
+        margin: 21% 15%;
+    }
 
+    .home-conditions-container {
+        flex-direction: column;
+        margin-bottom: 40px;
+    }
+
+    .home-condition-details-con {
+        margin: 0px 0 25px 0;
+    }
+
+    .home-season-icon {
+        margin: 0 0 -8px -5px;
+    }
+}
+
+/* ************* Larger Devices ***************  */
+@media screen and (min-width: 1025px) {
     .home-conditions-container {
         flex-direction: column;
         margin-bottom: 40px;

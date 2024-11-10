@@ -3,6 +3,7 @@
 }
 
 .location-search-input {
+  /* width: 100%; */
   background: none;
   border: none;
   border-bottom: 3px solid #fff;
@@ -54,6 +55,7 @@
 .buttonn {
   height: 35px;
   width: 120px;
+  min-width: 100px;
   border: 0;
   border-radius: 10rem;
   color: #fff;
@@ -113,4 +115,22 @@
   .home-search .buttonn {
     width: 100px;
   }
+}
+
+/* Tablets and small laptops (768px to 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .forecast-search {
+    padding-right: 10px;
+  }
+
+  .forecast-search .location-search-input {
+    margin: 0 15px 0 10px;
+    width: 70%;
+  }
+
+  .buttonn {
+    height: 35px;
+    min-width: 80px;
+  }
+
 }

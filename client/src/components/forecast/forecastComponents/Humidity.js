@@ -3,7 +3,8 @@ import './ForecastComponents.css';
 
 const HumidityIndicator = ({ type, humidity }) => {
 
-    const arrowPosition = 65 - (humidity * (75 / 100));
+    // const arrowPosition = 65 - (humidity * (75 / 100));
+    const arrowPosition = 65 - (((humidity - 4)) * (75 / 100));
 
     return (
         <>

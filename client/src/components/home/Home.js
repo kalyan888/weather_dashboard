@@ -11,7 +11,8 @@ import { format } from 'date-fns';
 
 const Home = ({ setError, setShowProgressBar, progressBarClear }) => {
   let deviceType = useDeviceType();
-  let isDesktop = deviceType === 'desktop' ? true : false
+  // let isDesktop = deviceType === 'desktop' ? true : false
+  const isSmallDevice = deviceType === 'mobile';
   const weather = useSelector((state) => state?.search?.weather);
   const weatherType = weather?.weather?.[0].description
   const weatherTypeCapitalized = weatherType ? weatherType.charAt(0).toUpperCase() + weatherType.slice(1) : '';
@@ -53,9 +54,9 @@ const Home = ({ setError, setShowProgressBar, progressBarClear }) => {
               </div>
             </div>
 
-            {isDesktop && <div className="weather-item">Feels Like {Math.round(weather?.main?.feels_like) || "--"} <span className="home-min-max-units">° C</span></div>}
+            {!isSmallDevice && <div className="weather-item">Feels Like {Math.round(weather?.main?.feels_like) || "--"} <span className="home-min-max-units">° C</span></div>}
 
-            {isDesktop && <div className='home-min-max-container'>
+            {!isSmallDevice && <div className='home-min-max-container'>
               <p className="weather-item home-con-item-high">High: {weather?.main?.temp_max || "--"} <span className="home-min-max-units">° C</span></p>
               <p className="weather-item">Low: {weather?.main?.temp_min || "--"} <span className="home-min-max-units">° C</span></p>
             </div>}

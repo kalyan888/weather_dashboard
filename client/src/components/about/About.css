@@ -131,7 +131,28 @@
   }
 }
 
-@media screen and (min-width: 768px) {
+/* Tablets and small laptops (768px to 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .about-container {
+    padding: 5% 2% 4% 2%;
+    overflow-x: auto;
+  }
+
+  .about-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 30px 20px 20px 20px;
+    height: 86vh;
+  }
+
+  .about-card {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+
+@media screen and (min-width: 1025px) {
   .about-card {
     flex: 1 1 1 calc(50% - 40px);
     min-height: 220px;

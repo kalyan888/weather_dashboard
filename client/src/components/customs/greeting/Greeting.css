@@ -34,8 +34,23 @@
     }
 }
 
+/* Tablets and small laptops (768px to 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .greeting-container {
+        top: 8px;
+    }
+
+    .greeting-location {
+        font-size: 1rem;
+    }
+
+    .greeting-heading {
+        font-size: 10px;
+    }
+}
+
 /* ************* Larger Devices ***************  */
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1025px) {
     .greeting-container {
         top: 5px;
         /* left: 20px; */

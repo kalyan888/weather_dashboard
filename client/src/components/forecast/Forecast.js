@@ -15,7 +15,7 @@ const Forecast = ({ setError, setShowProgressBar, progressBarClear }) => {
   const weather = useSelector((state) => state?.search?.weather);
   const forecast = useSelector((state) => state?.search?.forecast);
   const deviceType = useDeviceType();
-  const isDesktop = deviceType === 'desktop';
+  const isSmallDevice = deviceType === 'mobile';
 
   // State to store the selected day's data
   const [selectedDay, setSelectedDay] = useState(null);
@@ -138,7 +138,7 @@ const Forecast = ({ setError, setShowProgressBar, progressBarClear }) => {
       <div className="fc-day-wise-container">
         <Search searchClassName='forecast-search' setError={setError} setShowProgressBar={setShowProgressBar} progressBarClear={progressBarClear} />
         <div className="day-wise-main-container">
-          {isDesktop ? <div className="day-wise-scroll">
+          {!isSmallDevice ? <div className="day-wise-scroll">
             {groupedForecast.map((daily, index) => (
               <React.Fragment key={index}>
                 {dayWiseWeatherCard(daily, index)}
@@ -149,10 +149,10 @@ const Forecast = ({ setError, setShowProgressBar, progressBarClear }) => {
       </div>
       <div className='fc-right-container'>
         <div className="fc-right-top-container">
-          {!isDesktop && <h2 className="hourly-forecast-heading">Daily forecast</h2>}
+          {isSmallDevice && <h2 className="hourly-forecast-heading">Daily forecast</h2>}
           <div className='daily-container'>
             <div>
-              {isDesktop ? <>{selectedDay && fcRtWeatherCard(selectedDay)}</> : <div className="day-wise-scroll">
+              {!isSmallDevice ? <>{selectedDay && fcRtWeatherCard(selectedDay)}</> : <div className="day-wise-scroll">
                 {groupedForecast.map((daily, index) => (
                   <React.Fragment key={index}>
                     {dayWiseWeatherCard(daily, index)}

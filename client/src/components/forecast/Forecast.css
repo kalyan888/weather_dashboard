@@ -325,7 +325,7 @@
     height: calc(20vh - 5px);
     background-color: #f3f3f3;
     flex-grow: 0;
-    flex-shrink: 0;
+    flex-shrink: 1;
     flex-basis: calc(50% - 5px);
     border-radius: 10px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
@@ -562,6 +562,7 @@
     .fc-rb-wind-container {
         height: 130px;
         width: 100%;
+        padding: 10px 15px;
     }
 
     .fc-rb-wind-speed-container {
@@ -573,6 +574,30 @@
         top: 20px; */
         position: absolute;
         top: 65px;
+    }
+
+    .fc-rb-wind-speed {
+        font-size: 16px;
+    }
+
+    .fc-rb-wind-speed-desc {
+        font-size: 10px;
+    }
+
+    .fc-rb-wind-description {
+        font-size: 10px;
+    }
+
+    .rise-set-time {
+        font-size: 18px;
+    }
+
+    .rise-set-time-span {
+        font-size: 10px;
+    }
+
+    .weather-metric-icons {
+        font-size: 10px;
     }
 
     .fc-rb-wind-speed-fs,
@@ -598,7 +623,126 @@
     }
 }
 
-@media screen and (min-width: 768px) {
+/* Tablets and small laptops (768px to 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    /* Adjust styles specifically for tablets and 14-inch laptops here */
+    .fc-day-wise-container {
+        height: calc(92vh - 8px);
+        width: 25%;
+        position: fixed;
+        top: 9%;
+    }
+
+    .day-wise-scroll {
+        margin-left: 0px;
+        height: calc(80vh - 0px);
+    }
+
+    .weather-details {
+        margin-left: 5px;
+        max-width: 35%;
+    }
+
+    .weather-precipitation img {
+        width: 25px;
+        height: 20px;
+    }
+
+    .precipitation-chance {
+        font-size: 12px;
+    }
+
+    .weather-temp {
+        margin-left: 15px;
+    }
+
+    .daily-container {
+        height: 150px;
+    }
+
+    .fc-right-container {
+        top: 8vh;
+        left: 25%;
+        height: 92vh;
+        width: 75%;
+        overflow: auto;
+    }
+
+    .fc-rt-weather-card {
+        display: flex;
+        flex-direction: column;
+        max-width: 300px;
+        height: 140px;
+        position: relative;
+        top: 30px;
+        left: 4%;
+    }
+
+    .fc-rt-weather-date {
+        font-size: 14px;
+    }
+
+    .fc-right-middle-container {
+        top: 150px;
+    }
+
+    .fc-right-bottom-container {
+        top: 290px;
+    }
+
+    .fc-rb-wind-body {
+        margin-top: 15px;
+    }
+
+    .hourly-forecast-items {
+        height: 72%;
+        padding: 13px 0;
+    }
+
+    .hourly-icon {
+        margin: 8px 0 0 0;
+    }
+
+    .fc-rb-wind-title {
+        font-size: 12px
+    }
+
+    .fc-rb-wind-speed {
+        font-size: 16px;
+    }
+
+    .fc-rb-wind-speed-desc {
+        font-size: 10px;
+    }
+
+    .fc-rb-wind-description {
+        font-size: 10px;
+    }
+
+    .fc-rb-wind-icon {
+        width: 18px;
+    }
+
+    .weather-metric-icons {
+        font-size: 10px;
+    }
+
+    .rise-set-time {
+        font-size: 18px;
+    }
+
+    .rise-set-time-span {
+        font-size: 10px;
+    }
+
+
+    .fc-rb-wind-container {
+        padding: 10px 15px;
+    }
+}
+
+@media screen and (min-width: 1025px) {
     .fc-day-wise-container {
         height: 92vh;
         width: 25%;
