@@ -248,6 +248,10 @@
     bottom: -30px;
   }
 
+  .humidity-container {
+    top: 25px;
+  }
+
   .humidity-label-btm {
     top: 82%;
   }

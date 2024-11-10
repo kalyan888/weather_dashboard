@@ -619,6 +619,7 @@
     }
 
     .fc-rb-humidity {
+        top: 20%;
         left: -8%;
     }
 }
