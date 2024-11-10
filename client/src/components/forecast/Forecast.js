@@ -207,7 +207,7 @@ const Forecast = ({ setError, setShowProgressBar, progressBarClear }) => {
                 <div className="fc-rb-wind-header">
                   <p className="fc-rb-wind-title">Weather Metrics</p>
                 </div>
-                <div className="fc-rb-wind-body">
+                <div className="fc-rb-wind-body pr-vs-body">
 
                   <>
                     <div className='weather-metrics-container'>

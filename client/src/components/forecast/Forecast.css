@@ -622,6 +622,10 @@
         top: 20%;
         left: -8%;
     }
+
+    .pr-vs-body {
+        margin-top: 15px;
+    }
 }
 
 /* Tablets and small laptops (768px to 1024px) */
