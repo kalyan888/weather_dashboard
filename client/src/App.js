@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { IoClose } from "react-icons/io5";
 import { VscError } from "react-icons/vsc";
 import { useDispatch, useSelector } from "react-redux";
@@ -27,12 +27,13 @@ const App = () => {
   // Alert Popup
   const [error, setError] = useState('');
   const [showProgressBar, setShowProgressBar] = useState(false);
-  const [timer, setTimer] = useState(null);
+  const timer = useRef(null);
+  useEffect(() => () => clearTimeout(timer.current), []);
 
-  const progressBarClear = () => {
+  const progressBarClear = useCallback(() => {
     // Clear any existing timer
-    if (timer) {
-      clearTimeout(timer);
+    if (timer.current) {
+      clearTimeout(timer.current);
     }
 
     const newTimer = setTimeout(() => {
@@ -40,14 +41,14 @@ const App = () => {
       setShowProgressBar(false);
     }, 3000);
 
-    setTimer(newTimer);
-  };
+    timer.current = newTimer;
+  }, []);
 
   const handleCloseAlert = () => {
     setError('');
     setShowProgressBar(false);
-    if (timer) {
-      clearTimeout(timer); // Clear timer if popup is closed
+    if (timer.current) {
+      clearTimeout(timer.current); // Clear timer if popup is closed
     }
   }
 

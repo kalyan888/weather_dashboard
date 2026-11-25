@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BiWater } from "react-icons/bi";
 // import { BsWater } from "react-icons/bs";
 import { FaWind } from "react-icons/fa";

@@ -3,6 +3,21 @@ import { useSelector } from 'react-redux';
 import './About.css';
 import { useDeviceType } from '../customs/constants';
 
+const getThemeBasedClr = (appliedTheme) => {
+    switch (appliedTheme) {
+      case 'summer-theme':
+        return '#ff0';
+      case 'cloudy-theme':
+        return '#00ffff';
+      case 'rainy-theme':
+        return '#0f0';
+      case 'winter-theme':
+        return '#00f';
+      default:
+        return '#fff';
+    }
+  }
+
 const About = () => {
   const { appliedTheme } = useSelector((state) => state.themesSlice);
   let deviceType = useDeviceType();
@@ -20,24 +35,9 @@ const About = () => {
     setY(y);
   };
 
-  const getThemeBasedClr = () => {
-    switch (appliedTheme) {
-      case 'summer-theme':
-        return '#ff0';
-      case 'cloudy-theme':
-        return '#00ffff';
-      case 'rainy-theme':
-        return '#0f0';
-      case 'winter-theme':
-        return '#00f';
-      default:
-        return '#fff';
-    }
-  }
-
   useEffect(() => {
     const plainMode = appliedTheme === 'dark-mode' ? true : appliedTheme === 'light-mode' ? true : false
-    const themeClr = getThemeBasedClr();
+    const themeClr = getThemeBasedClr(appliedTheme);
 
     const colors = plainMode
       ? ['#ff0', '#00ffff', '#0f0', '#f00', '#ff00ff', '#00f']

@@ -45,7 +45,7 @@ const Greeting = () => {
       fetchLocation();
     }
     return () => { active = false; };
-  }, []);
+  }, [coords, dispatch, initialLoad, store]);
 
   useEffect(() => {
     // const formattedDate = moment.unix(currentDate).format('MMMM D, YYYY h:mm A');

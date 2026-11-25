@@ -70,7 +70,7 @@ const Search = ({ searchClassName, setError, setShowProgressBar, progressBarClea
 
       progressBarClear();
     }
-  }, [searchError]);
+  }, [searchError, setError, setShowProgressBar, progressBarClear]);
 
   return (
     <form onSubmit={event => { event.preventDefault(); handleSearch(); }} className={`home-location-input-con ${searchClassName}`}>
