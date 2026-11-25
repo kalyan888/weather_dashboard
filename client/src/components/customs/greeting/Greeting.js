@@ -1,40 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import './Greeting.css';
-import { useSelector, useDispatch } from 'react-redux';
-import axios from 'axios';
-import { setCoords, fetchCoordinatesAndWeather } from '../../../store/searchSlice';
+import { useSelector, useDispatch, useStore } from 'react-redux';
+import { fetchCoordinatesAndWeather } from '../../../store/searchSlice';
 import moment from 'moment'
 
 const Greeting = () => {
+  const store = useStore();
   const dispatch = useDispatch();
   const location = useSelector((state) => state.search.location);
   const locationCapitalized = location ? location.charAt(0).toUpperCase() + location.slice(1) : '';
-  const country = useSelector((state) => state?.search?.weather?.sys?.country);
+  const countryName = useSelector(state => state.search.country);
   const coords = useSelector((state) => state.search.coords);
   const search = useSelector((state) => state.search);
   const currentDate = search?.weather?.dt
-  const [countryName, setCountryName] = useState('');
   const [initialLoad, setInitialLoad] = useState(true);
   const [greeting, setGreeting] = useState('');
 
   useEffect(() => {
-    const fetchCountryName = async () => {
-      try {
-        const response = await axios.get(`https://restcountries.com/v3/alpha/${country}`);
-        if (response.data && response.data[0]) {
-          setCountryName(response.data[0].name.common.charAt(0).toUpperCase() + response.data[0].name.common.slice(1));
-        }
-      } catch (error) {
-        console.error('Error fetching country name:', error);
-      }
-    };
-
-    if (country) {
-      fetchCountryName();
-    }
-  }, [country]);
-
-  useEffect(() => {
+    let active = true;
     if (initialLoad && !coords) {
       const fetchLocation = () => {
         if (navigator.geolocation) {
@@ -44,7 +27,7 @@ const Greeting = () => {
                 lat: position.coords.latitude,
                 lon: position.coords.longitude,
               };
-              dispatch(setCoords(coords));
+              if (!active || store.getState().search.status !== 'idle') return;
               dispatch(fetchCoordinatesAndWeather({ coords }));
               setInitialLoad(false);
             },
@@ -61,6 +44,7 @@ const Greeting = () => {
 
       fetchLocation();
     }
+    return () => { active = false; };
   }, []);
 
   useEffect(() => {

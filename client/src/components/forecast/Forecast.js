@@ -31,7 +31,7 @@ const Forecast = ({ setError, setShowProgressBar, progressBarClear }) => {
   }, [weather])
 
   useEffect(() => {
-    if (forecast?.list) {
+    if (forecast?.list?.length) {
       const groupedData = [];
       let currentDay = [];
       let currentDate = startOfDay(new Date(forecast.list[0].dt * 1000));
@@ -59,6 +59,7 @@ const Forecast = ({ setError, setShowProgressBar, progressBarClear }) => {
       }
 
       setGroupedForecast(groupedData.slice(0, 10));
+      setActiveIndex(0);
       setSelectedDay(groupedData[0]);
     }
   }, [forecast]);
@@ -101,8 +102,8 @@ const Forecast = ({ setError, setShowProgressBar, progressBarClear }) => {
             </div>
           }
           <div className="weather-temp">
-            <div className="temp-high">{daily[0]?.main?.temp_max ? `${Math.round(daily[0]?.main?.temp_max)}°` : '--'}</div>
-            <span className="temp-low">{daily[0]?.main?.temp_min ? `${Math.round(daily[0]?.main?.temp_min)}°` : '--'}</span>
+            <div className="temp-high">{daily[0]?.main?.temp_max != null ? `${Math.round(daily[0]?.main?.temp_max)}°` : '--'}</div>
+            <span className="temp-low">{daily[0]?.main?.temp_min != null ? `${Math.round(daily[0]?.main?.temp_min)}°` : '--'}</span>
           </div>
         </div>
       </div>
@@ -118,9 +119,9 @@ const Forecast = ({ setError, setShowProgressBar, progressBarClear }) => {
         <div className="fc-rt-weather-card">
           <p className="fc-rt-weather-date">{format(new Date(hourly[0]?.dt * 1000), 'eeee, MMMM d')}</p>
           <div className="fc-rt-weather-temp">
-            <p className="fc-rt-temp-high">{hourly[0]?.main?.temp_max ? `${Math.round(hourly[0]?.main.temp_max)}°` : '--'}</p>
+            <p className="fc-rt-temp-high">{hourly[0]?.main?.temp_max != null ? `${Math.round(hourly[0]?.main.temp_max)}°` : '--'}</p>
             <span className="fc-rt-temp-separator">/</span>
-            <span className="fc-rt-temp-low">{hourly[0]?.main?.temp_min ? `${Math.round(hourly[0]?.main.temp_min)}°` : '--'}</span>
+            <span className="fc-rt-temp-low">{hourly[0]?.main?.temp_min != null ? `${Math.round(hourly[0]?.main.temp_min)}°` : '--'}</span>
             <img src={weatherIcon} alt="Weather Icon" className="fc-rt-weather-icon" />
           </div>
           <div className="fc-rt-weather-condition">{hourly[0]?.weather?.[0]?.description || '--'}</div>
@@ -165,12 +166,12 @@ const Forecast = ({ setError, setShowProgressBar, progressBarClear }) => {
         </div>
         <div className='fc-right-middle-container'>
           <div className="hourly-forecast-container">
-            <h2 className="hourly-forecast-heading">Hourly forecast</h2>
+            <h2 className="hourly-forecast-heading">3-hour forecast</h2>
             <div className="hourly-forecast-items">
               {selectedDay?.map((hourly, index) => (
                 <div key={index} className="hourly-forecast-item">
-                  <p className="hourly-temp">{hourly?.main?.temp ? `${Math.round(hourly?.main?.temp)}°` : '--'}</p>
-                  <img src={getWeatherType(hourly?.weather?.[0]?.id)} alt="Weather Icon" className="hourly-icon" />
+                  <p className="hourly-temp">{hourly?.main?.temp != null ? `${Math.round(hourly?.main?.temp)}°` : '--'}</p>
+                  <img loading="lazy" decoding="async" src={getWeatherType(hourly?.weather?.[0]?.id)} alt="Weather Icon" className="hourly-icon" />
                   <span className="hourly-time">{format(new Date(hourly?.dt * 1000), 'HH:mm')}</span>
                 </div>
               ))}

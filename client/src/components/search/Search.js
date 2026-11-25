@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCoordinatesAndWeather, setLocation } from '../../store/searchSlice'; //, setCoords
+import { fetchCoordinatesAndWeather } from '../../store/searchSlice'; //, setCoords
 import "./Search.css";
 
 const Search = ({ searchClassName, setError, setShowProgressBar, progressBarClear }) => {
@@ -46,7 +46,7 @@ const Search = ({ searchClassName, setError, setShowProgressBar, progressBarClea
             setIsLoading(false);
           },
           {
-            enableHighAccuracy: true
+            timeout: 10000, maximumAge: 300000
           }
         );
       } else {
@@ -57,7 +57,6 @@ const Search = ({ searchClassName, setError, setShowProgressBar, progressBarClea
         setIsLoading(false);
       }
     } else {
-      dispatch(setLocation(localLocation));
       dispatch(fetchCoordinatesAndWeather({ location: localLocation }))
         .finally(() => setIsLoading(false));
     }
@@ -74,18 +73,18 @@ const Search = ({ searchClassName, setError, setShowProgressBar, progressBarClea
   }, [searchError]);
 
   return (
-    <div className={`home-location-input-con ${searchClassName}`}>
+    <form onSubmit={event => { event.preventDefault(); handleSearch(); }} className={`home-location-input-con ${searchClassName}`}>
       <input
         className='location-search-input'
         type="text"
         value={localLocation}
         onChange={(e) => setLocalLocation(e.target.value)}
-        placeholder="Enter location"
+        aria-label="City name" placeholder="Enter a city"
       />
-      <button className="buttonn" onClick={handleSearch}>
+      <button className="buttonn" type="submit" disabled={isLoading} aria-label="Search weather">
         {isLoading ? <div className="loader"></div> : 'Search'}
       </button>
-    </div>
+    </form>
   );
 };
 

@@ -156,7 +156,7 @@ ul {
     min-height: 100vh;
   }
   .app.cloudy-theme {
-    background-image: url('../src/assets/images/mobile-img.jpg');
+    background-image: url('../src/assets/images/mobile-img.webp');
     background-size: cover; 
     background-position: center; 
     background-repeat: no-repeat;

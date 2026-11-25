@@ -14,7 +14,7 @@ const Home = ({ setError, setShowProgressBar, progressBarClear }) => {
   // let isDesktop = deviceType === 'desktop' ? true : false
   const isSmallDevice = deviceType === 'mobile';
   const weather = useSelector((state) => state?.search?.weather);
-  const weatherType = weather?.weather?.[0].description
+  const weatherType = weather?.weather?.[0]?.description
   const weatherTypeCapitalized = weatherType ? weatherType.charAt(0).toUpperCase() + weatherType.slice(1) : '';
 
 
@@ -25,11 +25,12 @@ const Home = ({ setError, setShowProgressBar, progressBarClear }) => {
         <div className="weather-container">
           {/* <Greeting /> */}
           <div className="weather-left">
-            <img src={getWeatherType(weather?.weather?.[0]?.id)} alt="" className="home-season-icon" />
-            <div className="home-weather-type">{weatherTypeCapitalized || "--"}</div>
+            {weather?.name && <h2 className="current-city">{weather.name}</h2>}
+            <img decoding="async" src={getWeatherType(weather?.weather?.[0]?.id)} alt="" className="home-season-icon" />
+            <div className="home-weather-type">{weatherTypeCapitalized ?? "--"}</div>
 
             <h1 className="weather-item home-temp">
-              {weather?.main?.temp ? Math.round(weather.main.temp) : "--"}
+              {weather?.main?.temp != null ? Math.round(weather.main.temp) : "--"}
               <span className="weather-item home-temp-units">° C</span>
             </h1>
 
@@ -41,24 +42,24 @@ const Home = ({ setError, setShowProgressBar, progressBarClear }) => {
               <div className="home-condition-details-con">
                 <BiWater className='home-condition-icons' />
                 <div className="weather-right-item-desc">
-                  <p className="home-hum-perc">{weather?.main?.humidity || "--"}%</p>
+                  <p className="home-hum-perc">{weather?.main?.humidity ?? "--"}%</p>
                   <span className="home-hum-desc">Humidity</span>
                 </div>
               </div>
               <div className="home-condition-details-con">
                 <FaWind className='home-condition-icons' />
                 <div className="weather-right-item-desc">
-                  <p className="home-hum-perc">{weather?.wind?.speed || "--"}Km/h</p>
+                  <p className="home-hum-perc">{weather?.wind?.speed != null ? Math.round(weather.wind.speed * 3.6) : "--"} km/h</p>
                   <span className="home-hum-desc">Wind Speed</span>
                 </div>
               </div>
             </div>
 
-            {!isSmallDevice && <div className="weather-item">Feels Like {Math.round(weather?.main?.feels_like) || "--"} <span className="home-min-max-units">° C</span></div>}
+            {!isSmallDevice && <div className="weather-item">Feels Like {weather?.main?.feels_like != null ? Math.round(weather.main.feels_like) : "--"} <span className="home-min-max-units">° C</span></div>}
 
             {!isSmallDevice && <div className='home-min-max-container'>
-              <p className="weather-item home-con-item-high">High: {weather?.main?.temp_max || "--"} <span className="home-min-max-units">° C</span></p>
-              <p className="weather-item">Low: {weather?.main?.temp_min || "--"} <span className="home-min-max-units">° C</span></p>
+              <p className="weather-item home-con-item-high">High: {weather?.main?.temp_max ?? "--"} <span className="home-min-max-units">° C</span></p>
+              <p className="weather-item">Low: {weather?.main?.temp_min ?? "--"} <span className="home-min-max-units">° C</span></p>
             </div>}
 
           </div>

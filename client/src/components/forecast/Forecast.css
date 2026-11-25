@@ -786,3 +786,8 @@
     transform-origin: center center;
     transition: transform 0.3s ease-in-out;
   } */
+.day-wise-scroll { scrollbar-width: thin; }
+.day-wise-scroll .weather-condition { line-height: 1.3; overflow-wrap: anywhere; }
+.day-wise-scroll .weather-day { font-weight: 600; }
+.hourly-forecast-items { overscroll-behavior-x: contain; }
+.hourly-forecast-item { font-variant-numeric: tabular-nums; }
